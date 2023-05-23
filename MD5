@@ -1,7 +1,7 @@
-0284757ff8c5830017e583bfbdc283bc *DESCRIPTION
+182c941c4976cbfaf9eddd1b57ddfe31 *DESCRIPTION
 d47b5785d4eba3c2e2ea5a3deb65fcf2 *LICENSE
 64151170579951f3b26bf278cf98d3e2 *NAMESPACE
-8ab8389f825a03c88b2afedf5a50c2e1 *NEWS.md
+60d74d0c7c242fac52e8130448a91ff3 *NEWS.md
 dd2d9559ee4e0ceb3d1ba136aac2486b *R/01_classDefinitions.R
 6bdece0bdeb63ed2de96ee4bca0ccafc *R/02_genericDefinitions.R
 6e894e27e3096452c2de0ce84fcce49c *R/build_chron.R
@@ -31,7 +31,7 @@ b24670958e6d0f89f2c9df79b2ac124f *R/get_sites.R
 d8a937ee3f7a311c735f6855cbfc370e *R/get_table.R
 1aa9128fa067b85c52e3c88daeb376cb *R/getids.r
 5aa2072b03e8c79214521616e9728003 *R/neotoma-methods.R
-dd2aa58e7e173be901ec6dd5d4e2a1de *R/parseURL.R
+d25912ce19d4ae57634c5bb319f3a9e1 *R/parseURL.R
 7a177451bb526a94e53a3985eb31ba9c *R/parse_body.R
 39704a317de937d4668f2b6ca6d8f0ce *R/parse_location.R
 6fd3b5cf0e1e2accc04b1bce575ec992 *R/pingNeotoma.r
@@ -58,11 +58,11 @@ ac584bd004f9c35f2f0260c64b3087e6 *R/testNull.R
 699fcb9ef828888b1b0026236e408519 *R/toWide.R
 0666b5ad3a1eaa8e445b65b519f417ca *R/use_na.R
 cb2c8aa0d546207c0240948992c6d3bc *R/utils-pipe.R
-3ec46d0fb43d6c61771d3fc2552ccebc *README.md
+bcf4e99f5f7239f21c3cd48af979bfb1 *README.md
 efd419d1091f08194e9a2e0007058ecd *build/vignette.rds
 b24cebac510585077876093ed0280600 *inst/doc/neotoma2-package.R
 91ca11e1a2ce13dd14e871963d7f265d *inst/doc/neotoma2-package.Rmd
-cba6d3dfa3d47d0a90647568951c8adf *inst/doc/neotoma2-package.html
+973bbe3d4fbc3422ac72de44cd3ac893 *inst/doc/neotoma2-package.html
 b05536edeafc6f0d8c27bbfe9a56a5a9 *man/add_chronology-collunit-chronology-data.frame-method.Rd
 a069b14a152f20093b8bb9b15191ead2 *man/add_chronology.Rd
 862f5dc701402cccd3861374206ebdc6 *man/as.data.frame-authors-method.Rd
