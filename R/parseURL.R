@@ -40,13 +40,14 @@ parseURL <- function(x, use = "neotoma", all_data = FALSE, ...) { # nolint
                     use)
   
   query <- list(...)
+
   if (all_data == FALSE) {
     try(
       response <- httr::GET(paste0(baseurl, x),
                             add_headers("User-Agent" = "neotoma2 R package"),
                             query = query)
     )
-    
+
     if (inherits(response, "try-error")) {
       # Handle the SSL error
       error_message <- conditionMessage(response)
@@ -61,10 +62,8 @@ parseURL <- function(x, use = "neotoma", all_data = FALSE, ...) { # nolint
       # The 414 error is a URL that is too long. This is a lazy way to manage
       # the choice between a POST and GET call.
       # Function with POST (Use this once server issue is resolved)
-      query <- list(...)
-      args <- x
-      new_url <- newURL(baseurl, args, ...)
-      body <- parsebody(args, ...)
+      new_url <- newURL(baseurl, x, ...)
+      body <- parsebody(x, all_data=FALSE, ...)
       try(
         response <- httr::POST(new_url,
                              body = body,
@@ -86,8 +85,7 @@ parseURL <- function(x, use = "neotoma", all_data = FALSE, ...) { # nolint
                     Check that the path is valid, and check the current
                      status of the Neotoma API services at
                       http://data.neotomadb.org")
-      warning("To get the complete data, use all_data = TRUE. 
-        Returned the first 25 elements.")
+      warning("To get the complete data, use all_data = TRUE.")
     }
     
     # Break if we can't connect:
@@ -113,7 +111,9 @@ parseURL <- function(x, use = "neotoma", all_data = FALSE, ...) { # nolint
     }
     
     query$offset <- 0
-    query$limit <- 100
+    query$limit <- 50
+    ql <- query$limit
+    
     try(
       response <- httr::GET(paste0(baseurl, x),
                           add_headers("User-Agent" = "neotoma2 R package"),
@@ -128,20 +128,13 @@ parseURL <- function(x, use = "neotoma", all_data = FALSE, ...) { # nolint
         stop("SSL certificate error:", error_message, "\n Please contact the Neotoma Team")
       }
     }
-    stop_for_status(response,
-                    task = "Could not connect to the Neotoma API.
-                    Check that the path is valid, and check the current
-                     status of the Neotoma API services at
-                      http://data.neotomadb.org")
-    
+
     if (response$status_code == 414) {
       # Function with Post (Use this once server issue is resolved)
       args <- x
       new_url <- newURL(baseurl, args, ...)
-      body <- parsebody(args, ...)
+      body <- parsebody(args, all_data, ...)
       body <- jsonlite::fromJSON(body)
-      
-      
       if('siteid' %in% names(body)){
         ids_nos <- as.numeric(stringr::str_extract_all(body$siteid,
                                                        "[0-9.]+")[[1]])}
@@ -165,7 +158,7 @@ parseURL <- function(x, use = "neotoma", all_data = FALSE, ...) { # nolint
         if('datasetid' %in% names(body)){
           body2$datasetid <- paste0(sequ, collapse = ",")
         }
-        body2$limit <- 50
+        body2$limit <- ql # Refer to the previous variable rather than hardcoding
         body2 <- jsonlite::toJSON(body2, auto_unbox = TRUE)
         try(
           response <- httr::POST(new_url,
