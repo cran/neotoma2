@@ -1,12 +1,20 @@
-# neotoma2 1.0.1
+# neotoma2 1.0.0
 
 * Added a `NEWS.md` file to track changes to the package.
 
----
 
-May 23rd, 2023
-Added handling of SSL certificate errors.
+# neotoma2 1.0.3
 
---- June 26th, 2023
-Added bug fixes that were trimming down the results.
-Parsed URLs different to handle get_downloads.sites or get_datasets.sites with limit parameters.
+## Remarks for Upgrade 1.0.3
+
+Fixed errors in the API calls.
+
+Fixed filter function for collection units and datasets. Changed \itemize for \describe
+
+Updated plotLeaflet to not add provider tiles.
+
+Removed mapview to avoid `sp` conflicts.
+
+Updated README to reflect milestones with JOSS.
+
+Updated maintainer.

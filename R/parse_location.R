@@ -1,5 +1,5 @@
 #' @title parse_location
-#' @author Socorro Dominguez \email{sedv8808@@gmail.com}
+#' @author Socorro Dominguez \email{s.dominguez@ht-data.com}
 #' @import gtools
 #' @import lubridate
 #' @import geojsonsf
@@ -7,6 +7,8 @@
 #' @importFrom methods new
 #' @description
 #' Retrieve location from datasets WTK, GeoJson, bounding box
+#' @keywords internal
+#' @noRd
 #' @param x location object
 parse_location <- function(x) {
   if (is.numeric(x)) {

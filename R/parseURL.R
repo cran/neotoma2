@@ -1,6 +1,6 @@
 #' @md
 #' @title parseURL
-#' @author Socorro Dominguez \email{sedv8808@@gmail.com}
+#' @author Socorro Dominguez \email{s.dominguez@ht-data.com}
 #' @author Simon Goring \email{goring@wisc.edu}
 #' @import gtools
 #' @import lubridate
@@ -119,6 +119,7 @@ parseURL <- function(x, use = "neotoma", all_data = FALSE, ...) { # nolint
                           add_headers("User-Agent" = "neotoma2 R package"),
                           query = query)
     )
+    
     if (inherits(response, "try-error")) {
       # Handle the SSL error
       error_message <- conditionMessage(response)
@@ -129,7 +130,7 @@ parseURL <- function(x, use = "neotoma", all_data = FALSE, ...) { # nolint
       }
     }
 
-    if (response$status_code == 414) {
+    if (response$status_code == 414 | nchar(response$url) > 2000) {
       # Function with Post (Use this once server issue is resolved)
       args <- x
       new_url <- newURL(baseurl, args, ...)
