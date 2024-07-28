@@ -1,7 +1,7 @@
-9d01ca578e038c4a5a9fd78c81a4faec *DESCRIPTION
+812f251082d0fd010d1bb5afd98435f3 *DESCRIPTION
 98d2d018e1fb08494e8caa2a346af9d0 *LICENSE
 c4acee8705dc3948115bde4144aa4010 *NAMESPACE
-80c36d78db22c6d6ecb9848f20abfb69 *NEWS.md
+2cec61f1ebcd44b9bbeef1386c95b587 *NEWS.md
 dd2d9559ee4e0ceb3d1ba136aac2486b *R/01_classDefinitions.R
 3bab7c2919edb1464685536d8062c676 *R/02_genericDefinitions.R
 6e894e27e3096452c2de0ce84fcce49c *R/build_chron.R
@@ -59,12 +59,12 @@ f620d36ea4473f17badcd77083a5e7dd *R/toJSON.R
 699fcb9ef828888b1b0026236e408519 *R/toWide.R
 61c335fcc07d8baee549bbe9af46f3fa *R/use_na.R
 cb2c8aa0d546207c0240948992c6d3bc *R/utils-pipe.R
-b6bc134e1ecd9bae411ae6b6cf30e026 *README.md
+cdf7ebf0385213977d737f59fd603b42 *README.md
 e357cdb421980d87f8aa4e07f6b0017b *build/vignette.rds
 63de9ae17953cae44bda1e42ee1ca704 *inst/CITATION
 b24cebac510585077876093ed0280600 *inst/doc/neotoma2-package.R
 9f14dc2293320bff5184add8ae899557 *inst/doc/neotoma2-package.Rmd
-c7e90eae26753b7524f1597c4633e339 *inst/doc/neotoma2-package.html
+28fdf43ba24b8225d8424213700d7d8d *inst/doc/neotoma2-package.html
 b05536edeafc6f0d8c27bbfe9a56a5a9 *man/add_chronology-collunit-chronology-data.frame-method.Rd
 a069b14a152f20093b8bb9b15191ead2 *man/add_chronology.Rd
 862f5dc701402cccd3861374206ebdc6 *man/as.data.frame-authors-method.Rd
@@ -325,7 +325,7 @@ a0218fbff0ebe4c480646b73c438ef5f *tests/testthat/test-set_server.R
 063f2b808e943798097e08625dcda7dc *tests/testthat/test_check_contacts.R
 6fc046f361786106ad1dd3cf1820ada5 *tests/testthat/test_chroncontrols.R
 e69f6d7a6f2017f21c0d168a9ce45253 *tests/testthat/test_clean.R
-8d1e01409dbbd5781e578fecd780a1e8 *tests/testthat/test_datasets.R
+afdfadb669a66464c466c89859aee7ad *tests/testthat/test_datasets.R
 78d4053089c8719d26ef5b0f00e5c403 *tests/testthat/test_download.R
 7d461bf6f71bee47994db9532b074257 *tests/testthat/test_examples.R
 57ca551937a65159600d2d0c77914c0c *tests/testthat/test_filter.R
