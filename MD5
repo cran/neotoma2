@@ -1,7 +1,7 @@
-812f251082d0fd010d1bb5afd98435f3 *DESCRIPTION
+9a247e4e0509453121577a16db2e7ffe *DESCRIPTION
 98d2d018e1fb08494e8caa2a346af9d0 *LICENSE
 c4acee8705dc3948115bde4144aa4010 *NAMESPACE
-2cec61f1ebcd44b9bbeef1386c95b587 *NEWS.md
+0619d3abffae26eaf4429b71669247e0 *NEWS.md
 dd2d9559ee4e0ceb3d1ba136aac2486b *R/01_classDefinitions.R
 3bab7c2919edb1464685536d8062c676 *R/02_genericDefinitions.R
 6e894e27e3096452c2de0ce84fcce49c *R/build_chron.R
@@ -62,9 +62,9 @@ cb2c8aa0d546207c0240948992c6d3bc *R/utils-pipe.R
 cdf7ebf0385213977d737f59fd603b42 *README.md
 e357cdb421980d87f8aa4e07f6b0017b *build/vignette.rds
 63de9ae17953cae44bda1e42ee1ca704 *inst/CITATION
-b24cebac510585077876093ed0280600 *inst/doc/neotoma2-package.R
-9f14dc2293320bff5184add8ae899557 *inst/doc/neotoma2-package.Rmd
-28fdf43ba24b8225d8424213700d7d8d *inst/doc/neotoma2-package.html
+4e6f9163f3a71509f0390db60deae2e4 *inst/doc/neotoma2-package.R
+8d2429d13f5b458d39c5467ae256b4b9 *inst/doc/neotoma2-package.Rmd
+4ef81794a50ccf5a472633513fa5d91d *inst/doc/neotoma2-package.html
 b05536edeafc6f0d8c27bbfe9a56a5a9 *man/add_chronology-collunit-chronology-data.frame-method.Rd
 a069b14a152f20093b8bb9b15191ead2 *man/add_chronology.Rd
 862f5dc701402cccd3861374206ebdc6 *man/as.data.frame-authors-method.Rd
@@ -351,4 +351,4 @@ ddc35d28a3ae8f1b2ff58e715f64ed7c *vignettes/images/understanding_S4_structure.pn
 6196c04b2cf9dea27fcc942b7d4cafb2 *vignettes/images/understanding_S4_structure_get_datasets.png
 2a90e106af113daac0077cc7dbeed64c *vignettes/images/understanding_S4_structure_get_datasets.svg
 ad4649e3a2ada25dc12ca35e70dfda57 *vignettes/images/understanding_S4_structure_get_sites.svg
-9f14dc2293320bff5184add8ae899557 *vignettes/neotoma2-package.Rmd
+8d2429d13f5b458d39c5467ae256b4b9 *vignettes/neotoma2-package.Rmd

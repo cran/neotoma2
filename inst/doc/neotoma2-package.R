@@ -100,24 +100,44 @@ brazil <- '{"type": "Polygon",
 # functionality of the `sf` package.
 brazil_sf <- geojsonsf::geojson_sf(brazil)
 
-brazil_datasets <- get_datasets(loc = brazil_sf)
-brazil_datasets
+
+brazil_datasets <- tryCatch({
+  get_datasets(loc = brazil_sf)
+}, error = function(e) {
+  message("Failed to retrieve datasets for Brazil: ", e$message)
+  NULL
+})
 
 ## ----leafletBrazil------------------------------------------------------------
-plotLeaflet(brazil_datasets)
+if (!is.null(brazil_datasets)) {
+  plotLeaflet(brazil_datasets)
+} else {
+  cat("Datasets could not be retrieved due to an API error. Please try again later.")
+}
 
 ## ----filterBrazil-------------------------------------------------------------
-brazil_dates <- neotoma2::filter(brazil_datasets,
-  datasettype == "geochronologic")
+
+if (!is.null(brazil_datasets)) {
+  brazil_dates <- neotoma2::filter(brazil_datasets,
+                                   datasettype == "geochronologic")
+} else {
+  cat("Datasets could not be filtered due to a previous API error. Please try again later.")
+}
 
 # or:
-
-brazil_dates <- brazil_datasets %>%
-  neotoma2::filter(datasettype == "geochronologic")
+if (!is.null(brazil_datasets)) {
+  brazil_dates <- brazil_datasets %>%
+    neotoma2::filter(datasettype == "geochronologic")
+} else {
+  cat("Datasets could not be filtered due to a previous API error. Please try again later.")
+}
 
 # With boolean operators:
-
-brazil_space <- brazil_datasets %>% neotoma2::filter(lat > -18 & lat < -16)
+if (!is.null(brazil_datasets)) {
+  brazil_space <- brazil_datasets %>% neotoma2::filter(lat > -18 & lat < -16)
+} else {
+  cat("Datasets could not be filtered due to a previous API error. Please try again later.")
+}
 
 ## ----filterAndShowTaxa--------------------------------------------------------
 brazil <- '{"type": "Polygon", 
@@ -133,24 +153,33 @@ brazil <- '{"type": "Polygon",
 # functionality of the `sf` package.
 brazil_sf <- geojsonsf::geojson_sf(brazil)
 
-brazil_records <- get_datasets(loc = brazil_sf) %>%
-  neotoma2::filter(datasettype == "pollen" & age_range_young <= 1000 & age_range_old >= 10000) %>%
-  get_downloads(verbose = FALSE)
+brazil_records <- tryCatch({
+  get_datasets(loc = brazil_sf) %>%
+    neotoma2::filter(datasettype == "pollen" & age_range_young <= 1000 & age_range_old >= 10000) %>%
+    get_downloads(verbose = FALSE)
+}, error = function(e) {
+  message("Failed to retrieve records for Brazil: ", e$message)
+  NULL
+})
 
-count_by_site <- samples(brazil_records) %>%
-  dplyr::filter(elementtype == "pollen" & units == "NISP") %>%
-  group_by(siteid, variablename) %>%
-  summarise(n = n()) %>%
-  group_by(variablename) %>%
-  summarise(n = n()) %>%
-  arrange(desc(n))
+if (!is.null(brazil_records)) {
+  count_by_site <- samples(brazil_records) %>%
+    dplyr::filter(elementtype == "pollen" & units == "NISP") %>%
+    group_by(siteid, variablename) %>%
+    summarise(n = n()) %>%
+    group_by(variablename) %>%
+    summarise(n = n()) %>%
+    arrange(desc(n))
+} else {
+  cat("Records could not be retrieved due to an API error. Please try again later.")
+}
 
-## ----pubsbyid-----------------------------------------------------------------
-one <- get_publications(12)
-two <- get_publications(c(12, 14))
+## ----pubsbyid, eval=FALSE-----------------------------------------------------
+#  one <- get_publications(12)
+#  two <- get_publications(c(12, 14))
 
-## ----showSinglePub------------------------------------------------------------
-two[[2]]
+## ----showSinglePub, eval=FALSE------------------------------------------------
+#  two[[2]]
 
 ## ----fulltestPubSearch--------------------------------------------------------
 michPubs <- get_publications(search = "Michigan", limit = 2)
@@ -158,22 +187,22 @@ michPubs <- get_publications(search = "Michigan", limit = 2)
 ## ----nonsenseSearch-----------------------------------------------------------
 noise <- get_publications(search = "Canada Banada Nanada", limit = 5)
 
-## ----getSecondPub-------------------------------------------------------------
-two[[1]]
+## ----getSecondPub, eval=FALSE-------------------------------------------------
+#  two[[1]]
 
-## ----subsetPubs---------------------------------------------------------------
-# Select publications with Neotoma Publication IDs 1 - 10.
-pubArray <- get_publications(1:10)
-# Select the first five publications:
-subPub <- pubArray[[1:5]]
-subPub
+## ----subsetPubs, eval=FALSE---------------------------------------------------
+#  # Select publications with Neotoma Publication IDs 1 - 10.
+#  pubArray <- get_publications(1:10)
+#  # Select the first five publications:
+#  subPub <- pubArray[[1:5]]
+#  subPub
 
-## ----setNewPub----------------------------------------------------------------
-new_pub <- set_publications(
-  articletitle = "Myrtle Lake: a late- and post-glacial pollen diagram from northern Minnesota",
-  journal = "Canadian Journal of Botany",
-  volume = 46)
+## ----setNewPub, eval=FALSE----------------------------------------------------
+#  new_pub <- set_publications(
+#  articletitle = "Myrtle Lake: a late- and post-glacial pollen diagram from northern Minnesota",
+#  journal = "Canadian Journal of Botany",
+#  volume = 46)
 
-## ----setPubValue--------------------------------------------------------------
-new_pub@pages <- "1397-1410"
+## ----setPubValue, eval=FALSE--------------------------------------------------
+#  new_pub@pages <- "1397-1410"
 

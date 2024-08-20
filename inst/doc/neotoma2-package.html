@@ -4492,28 +4492,20 @@ dataset types.</p>
 <div id="resources" class="section level3">
 <h3>Resources</h3>
 <ul>
-<li><a href="https://www.neotomadb.org">Neotoma Homepage</a>
-<ul>
+<li><a href="https://www.neotomadb.org">Neotoma Homepage</a></li>
 <li>The Neotoma homepage, with links to contacts, news and other tools
 and resources.</li>
-</ul></li>
 <li><a href="https://open.neotomadb.org/manual/">Neotoma Database
-Manual</a>
-<ul>
+Manual</a></li>
 <li>Documentation for the database itself, with examples of SQL queries
 and descriptions of Neotoma tables.</li>
-</ul></li>
-<li><a href="https://api.neotomadb.org/">Neotoma (JSON) API</a>
-<ul>
+<li><a href="https://api.neotomadb.org/">Neotoma (JSON) API</a></li>
 <li>A tool to obtain data in JSON format directly through calls to
 Neotoma.</li>
-</ul></li>
 <li><a href="https://github.com/NeotomaDB">Neotoma GitHub
-Organization</a>
-<ul>
+Organization</a></li>
 <li>Open code repositories to see how folks are using Neotoma and what
 kinds of projects we’re working on.</li>
-</ul></li>
 <li>Workshops and Code Examples (<a href="#workshops-and-code-examples">see the section below</a>)</li>
 </ul>
 </div>
@@ -7432,14 +7424,14 @@ site records already.</p>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>alex <span class="ot">&lt;-</span> <span class="fu">get_sites</span>(<span class="dv">24</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>alex</span>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="co">#&gt;  siteid       sitename      lat      long altitude</span></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co">#&gt;      24 Alexander Lake 53.33333 -60.58333       NA</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co">#&gt;      24 Alexander Lake 53.33333 -60.58333       73</span></span>
 <span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="co"># Search for sites with multiple IDs using c():</span></span>
 <span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>multiple_sites <span class="ot">&lt;-</span> <span class="fu">get_sites</span>(<span class="fu">c</span>(<span class="dv">24</span>, <span class="dv">47</span>))</span>
 <span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>multiple_sites</span>
 <span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="co">#&gt;  siteid       sitename      lat      long altitude</span></span>
-<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="co">#&gt;      24 Alexander Lake 53.33333 -60.58333       NA</span></span>
-<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="co">#&gt;      47        Liberty 43.52000 -90.78000       NA</span></span></code></pre></div>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="co">#&gt;      24 Alexander Lake 53.33333 -60.58333       73</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="co">#&gt;      47        Liberty 43.52000 -90.78000      353</span></span></code></pre></div>
 <p>Once you search for a site, the <code>neotoma2</code> R package makes
 a call to the Neotoma Database, and returns a structured
 <code>sites</code> object that contains metadata about the sites, and
@@ -7542,7 +7534,7 @@ use <code>c()</code>).</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>alex <span class="ot">&lt;-</span> <span class="fu">get_sites</span>(<span class="at">sitename =</span> <span class="st">&quot;Alexander Lake&quot;</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>alex</span>
 <span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="co">#&gt;  siteid       sitename      lat      long altitude</span></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co">#&gt;      24 Alexander Lake 53.33333 -60.58333       NA</span></span></code></pre></div>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co">#&gt;      24 Alexander Lake 53.33333 -60.58333       73</span></span></code></pre></div>
 <p>Neotoma uses a Postgres Database to manage data. Postgres uses the
 <code>%</code> sign as a general wildcard, so we can use the
 <code>%</code> in the <code>sitename</code> argument operator to help us
@@ -7552,10 +7544,10 @@ case <strong>insensitive</strong> so a search for <code>alex%</code> or
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>alex <span class="ot">&lt;-</span> <span class="fu">get_sites</span>(<span class="at">sitename =</span> <span class="st">&#39;Alex%&#39;</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>alex</span>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co">#&gt;  siteid           sitename      lat      long altitude</span></span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co">#&gt;      24     Alexander Lake 53.33333 -60.58333       NA</span></span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co">#&gt;      25        Alexis Lake 52.51667 -57.03333       NA</span></span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">#&gt;    4478 Alexander [3CN117] 35.25000 -92.61667       NA</span></span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt;   26226     Alexandra Lake 43.29030 -74.16966       NA</span></span></code></pre></div>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co">#&gt;      24     Alexander Lake 53.33333 -60.58333       73</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co">#&gt;      25        Alexis Lake 52.51667 -57.03333      193</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">#&gt;    4478 Alexander [3CN117] 35.25000 -92.61667      180</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt;   26226     Alexandra Lake 43.29030 -74.16966      351</span></span></code></pre></div>
 <!-- Since this new `sites` object has 4 elements that belong to `site`, we may want to access only one of the objects, or sets of metadata from our variable `alex`. -->
 </div>
 <div id="searching-for-sites-by-age" class="section level4">
@@ -7778,7 +7770,7 @@ information such as <code>sitename</code>, <code>lat</code>, and
 <span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>                    <span class="at">altitude =</span> <span class="dv">30</span>)</span>
 <span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>my_site</span>
 <span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#&gt;                                siteid sitename lat long altitude</span></span>
-<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#&gt;  d8e7786d-25ae-43c8-8e6f-5ad13cabfc39  My Lake   2    1       30</span></span></code></pre></div>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#&gt;  840fe71b-58c7-468a-8fa5-265ffbd70dfb  My Lake   2    1       30</span></span></code></pre></div>
 <p>If we have a set of sites that we are analyzing, we can add the new
 site to the set of sites, either by appending it to the end, using
 <code>c()</code>, or by replacing a particular element using
@@ -7797,7 +7789,7 @@ existing sites if we have updated knowledge about site properties.</p>
 metadata associated with an existing site object:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># Update a value within an existing `sites` object:</span></span>
 <span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>longer_alex[[<span class="dv">3</span>]] <span class="ot">&lt;-</span> <span class="fu">set_site</span>(longer_alex[[<span class="dv">3</span>]],</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  <span class="at">altitude =</span> <span class="dv">3000</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="at">altitude =</span> <span class="dv">3000</span>)</span>
 <span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>longer_alex</span></code></pre></div>
 </div>
 </div>
@@ -7920,40 +7912,40 @@ can pass a sites object.</p>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>my_datasets <span class="ot">&lt;-</span> <span class="fu">get_datasets</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>))</span>
 <span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>my_datasets</span>
 <span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co">#&gt;  siteid                   sitename       lat      long altitude</span></span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="co">#&gt;       5                       17/2  55.25000 -74.93333       NA</span></span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="co">#&gt;      10 Site 1 (Cohen unpublished)  30.83000 -82.33000       NA</span></span>
-<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="co">#&gt;      15                    Aguilar -23.83333 -65.75000       NA</span></span>
-<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="co">#&gt;      20                   Akuvaara  69.12326  27.67406       NA</span></span></code></pre></div>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="co">#&gt;       5                       17/2  55.25000 -74.93333      300</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="co">#&gt;      10 Site 1 (Cohen unpublished)  30.83000 -82.33000       36</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="co">#&gt;      15                    Aguilar -23.83333 -65.75000     3828</span></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="co">#&gt;      20                   Akuvaara  69.12326  27.67406      159</span></span></code></pre></div>
 <p>You can also retrieve datasets by type directly from the API.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># Getting datasets by type</span></span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>my_pollen_datasets <span class="ot">&lt;-</span> <span class="fu">get_datasets</span>(<span class="at">datasettype =</span> <span class="st">&quot;pollen&quot;</span>, <span class="at">limit =</span> <span class="dv">25</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>my_pollen_datasets</span>
 <span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="co">#&gt;  siteid                            sitename       lat       long altitude</span></span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="co">#&gt;       7                     Three Pines Bog  47.00000  -80.11667       NA</span></span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="co">#&gt;       8                 Abalone Rocks Marsh  33.95639 -119.97667       NA</span></span>
-<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="co">#&gt;       9                              Adange  43.30556   41.33333       NA</span></span>
-<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="co">#&gt;      11        Konus Exposure, Adycha River  67.75000  135.58333       NA</span></span>
-<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="co">#&gt;      12                       Ageröds Mosse  55.93329   13.42559       NA</span></span>
-<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a><span class="co">#&gt;      13                     Aguas Calientes -23.08333  -67.40000       NA</span></span>
-<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="co">#&gt;      14                   Aguas Calientes 2 -23.50000  -67.58333       NA</span></span>
-<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a><span class="co">#&gt;      15                             Aguilar -23.83333  -65.75000       NA</span></span>
-<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a><span class="co">#&gt;      16                           Ahlenmoor  53.69908    8.74688       NA</span></span>
-<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a><span class="co">#&gt;      17                               Ajata -18.25000  -69.20000       NA</span></span>
-<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a><span class="co">#&gt;      18                    South Soefje Bog  29.60000  -97.51694       NA</span></span>
-<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a><span class="co">#&gt;      19             Akulinin Exposure P1282  47.11667  138.55000       NA</span></span>
-<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a><span class="co">#&gt;      20                            Akuvaara  69.12326   27.67406       NA</span></span>
-<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a><span class="co">#&gt;      21 Alazeya River Exposure, 8 m Terrace  68.50000  154.50000       NA</span></span>
-<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a><span class="co">#&gt;      22 Alazeya River Exposure, 9 m Terrace  64.33333  154.50000       NA</span></span>
-<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a><span class="co">#&gt;      24                      Alexander Lake  53.33333  -60.58333       NA</span></span>
-<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a><span class="co">#&gt;      25                         Alexis Lake  52.51667  -57.03333       NA</span></span>
-<span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a><span class="co">#&gt;      27                          Aliuk Pond  54.58333  -57.36667       NA</span></span>
-<span id="cb11-23"><a href="#cb11-23" tabindex="-1"></a><span class="co">#&gt;      29                          Lake Allie  44.80156  -94.55982       NA</span></span>
-<span id="cb11-24"><a href="#cb11-24" tabindex="-1"></a><span class="co">#&gt;      30                         Almora Lake  46.20611  -95.29361       NA</span></span>
-<span id="cb11-25"><a href="#cb11-25" tabindex="-1"></a><span class="co">#&gt;      31                           Alut Lake  60.13667  152.31278       NA</span></span>
-<span id="cb11-26"><a href="#cb11-26" tabindex="-1"></a><span class="co">#&gt;      32                             Amarete -15.23333  -68.98333       NA</span></span>
-<span id="cb11-27"><a href="#cb11-27" tabindex="-1"></a><span class="co">#&gt;      33             Amba River Exposure 596  43.31667  131.81667       NA</span></span>
-<span id="cb11-28"><a href="#cb11-28" tabindex="-1"></a><span class="co">#&gt;      68     Amguema River Valley Exposure 1  67.75000  178.70000       NA</span></span>
-<span id="cb11-29"><a href="#cb11-29" tabindex="-1"></a><span class="co">#&gt;      69     Amguema River Valley Exposure 2  67.66667  178.60000       NA</span></span></code></pre></div>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="co">#&gt;       7                     Three Pines Bog  47.00000  -80.11667      329</span></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="co">#&gt;       8                 Abalone Rocks Marsh  33.95639 -119.97667        9</span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="co">#&gt;       9                              Adange  43.30556   41.33333     2065</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="co">#&gt;      11        Konus Exposure, Adycha River  67.75000  135.58333      137</span></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="co">#&gt;      12                       Ageröds Mosse  55.93329   13.42559       47</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a><span class="co">#&gt;      13                     Aguas Calientes -23.08333  -67.40000     4233</span></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="co">#&gt;      14                   Aguas Calientes 2 -23.50000  -67.58333     4198</span></span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a><span class="co">#&gt;      15                             Aguilar -23.83333  -65.75000     3828</span></span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a><span class="co">#&gt;      16                           Ahlenmoor  53.69908    8.74688        5</span></span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a><span class="co">#&gt;      17                               Ajata -18.25000  -69.20000     4773</span></span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a><span class="co">#&gt;      18                    South Soefje Bog  29.60000  -97.51694      100</span></span>
+<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a><span class="co">#&gt;      19             Akulinin Exposure P1282  47.11667  138.55000      367</span></span>
+<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a><span class="co">#&gt;      20                            Akuvaara  69.12326   27.67406      159</span></span>
+<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a><span class="co">#&gt;      21 Alazeya River Exposure, 8 m Terrace  68.50000  154.50000       50</span></span>
+<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a><span class="co">#&gt;      22 Alazeya River Exposure, 9 m Terrace  64.33333  154.50000      125</span></span>
+<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a><span class="co">#&gt;      24                      Alexander Lake  53.33333  -60.58333       73</span></span>
+<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a><span class="co">#&gt;      25                         Alexis Lake  52.51667  -57.03333      193</span></span>
+<span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a><span class="co">#&gt;      27                          Aliuk Pond  54.58333  -57.36667        9</span></span>
+<span id="cb11-23"><a href="#cb11-23" tabindex="-1"></a><span class="co">#&gt;      29                          Lake Allie  44.80156  -94.55982      320</span></span>
+<span id="cb11-24"><a href="#cb11-24" tabindex="-1"></a><span class="co">#&gt;      30                         Almora Lake  46.20611  -95.29361      437</span></span>
+<span id="cb11-25"><a href="#cb11-25" tabindex="-1"></a><span class="co">#&gt;      31                           Alut Lake  60.13667  152.31278      488</span></span>
+<span id="cb11-26"><a href="#cb11-26" tabindex="-1"></a><span class="co">#&gt;      32                             Amarete -15.23333  -68.98333     3755</span></span>
+<span id="cb11-27"><a href="#cb11-27" tabindex="-1"></a><span class="co">#&gt;      33             Amba River Exposure 596  43.31667  131.81667        0</span></span>
+<span id="cb11-28"><a href="#cb11-28" tabindex="-1"></a><span class="co">#&gt;      68     Amguema River Valley Exposure 1  67.75000  178.70000      493</span></span>
+<span id="cb11-29"><a href="#cb11-29" tabindex="-1"></a><span class="co">#&gt;      69     Amguema River Valley Exposure 2  67.66667  178.60000      376</span></span></code></pre></div>
 <p>It can be computationally intensive to obtain the full set of records
 for <code>sites</code> or <code>datasets</code>. By default the
 <code>limit</code> for all queries is <code>25</code>. The default
@@ -7989,34 +7981,23 @@ the <code>spData</code> package:</p>
 <span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="co"># functionality of the `sf` package.</span></span>
 <span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a>brazil_sf <span class="ot">&lt;-</span> geojsonsf<span class="sc">::</span><span class="fu">geojson_sf</span>(brazil)</span>
 <span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a></span>
-<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a>brazil_datasets <span class="ot">&lt;-</span> <span class="fu">get_datasets</span>(<span class="at">loc =</span> brazil_sf)</span>
-<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a>brazil_datasets</span>
-<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a><span class="co">#&gt;  siteid                   sitename       lat      long altitude</span></span>
-<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a><span class="co">#&gt;      32                    Amarete -15.23333 -68.98333       NA</span></span>
-<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="co">#&gt;     211             Lago do Aquiri  -3.16667 -44.98333       NA</span></span>
-<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a><span class="co">#&gt;     323                 Cala Conto -17.56667 -65.93333       NA</span></span>
-<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="co">#&gt;     347               Chacaltaya 1 -16.36667 -68.15000       NA</span></span>
-<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="co">#&gt;     348               Chacaltaya 2 -16.36667 -68.15000       NA</span></span>
-<span id="cb13-22"><a href="#cb13-22" tabindex="-1"></a><span class="co">#&gt;     523             Cumbre Unduavi -16.35000 -68.04167       NA</span></span>
-<span id="cb13-23"><a href="#cb13-23" tabindex="-1"></a><span class="co">#&gt;     532            Lagoa das Patas   0.26667 -66.68333       NA</span></span>
-<span id="cb13-24"><a href="#cb13-24" tabindex="-1"></a><span class="co">#&gt;     843        Serra Campos Gerais -24.66667 -50.21667       NA</span></span>
-<span id="cb13-25"><a href="#cb13-25" tabindex="-1"></a><span class="co">#&gt;    1406                  Katantica -14.80000 -69.18333       NA</span></span>
-<span id="cb13-26"><a href="#cb13-26" tabindex="-1"></a><span class="co">#&gt;    1994                 Río Kaluyo -16.43333 -68.13333       NA</span></span>
-<span id="cb13-27"><a href="#cb13-27" tabindex="-1"></a><span class="co">#&gt;    2827                  Wasa Mayu -17.53333 -65.81667       NA</span></span>
-<span id="cb13-28"><a href="#cb13-28" tabindex="-1"></a><span class="co">#&gt;    9685              Laguna Granja -13.26341 -63.71025       NA</span></span>
-<span id="cb13-29"><a href="#cb13-29" tabindex="-1"></a><span class="co">#&gt;    9686             Laguna Orícore -13.34833 -63.52796       NA</span></span>
-<span id="cb13-30"><a href="#cb13-30" tabindex="-1"></a><span class="co">#&gt;   11923              Lake Valencia  10.16576 -67.76755       NA</span></span>
-<span id="cb13-31"><a href="#cb13-31" tabindex="-1"></a><span class="co">#&gt;   13964              Lake Chalalán -14.42868 -67.92125       NA</span></span>
-<span id="cb13-32"><a href="#cb13-32" tabindex="-1"></a><span class="co">#&gt;     526            Lagoa da Curuça  -0.76667 -47.85000       NA</span></span>
-<span id="cb13-33"><a href="#cb13-33" tabindex="-1"></a><span class="co">#&gt;    1717               Monte Blanco -17.02500 -67.35000       NA</span></span>
-<span id="cb13-34"><a href="#cb13-34" tabindex="-1"></a><span class="co">#&gt;    2248 Lagoa Campestre de Salitre -19.00000 -46.76667       NA</span></span>
-<span id="cb13-35"><a href="#cb13-35" tabindex="-1"></a><span class="co">#&gt;   11877              Lake Consuelo -13.95125 -68.99162       NA</span></span></code></pre></div>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a>brazil_datasets <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>({</span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a>  <span class="fu">get_datasets</span>(<span class="at">loc =</span> brazil_sf)</span>
+<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a>}, <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&quot;Failed to retrieve datasets for Brazil: &quot;</span>, e<span class="sc">$</span>message)</span>
+<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a>  <span class="cn">NULL</span></span>
+<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a>})</span></code></pre></div>
 <p>Now we have an object called <code>brazil_datasets</code> that
 contains 19.</p>
 <p>You can plot these findings!</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">plotLeaflet</span>(brazil_datasets)</span></code></pre></div>
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-6a80907a0a128d647a2c" style="width:288px;height:288px;"></div>
-<script type="application/json" data-for="htmlwidget-6a80907a0a128d647a2c">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[-15.23333,-3.16667,-17.56667,-16.36667,-16.36667,-16.35,0.26667,-24.66667,-14.8,-16.43333,-17.53333,-13.263406,-13.348328,10.165756,-14.428682,-0.76667,-17.025,-19,-13.951252],[-68.98333,-44.98333,-65.93333,-68.15000000000001,-68.15000000000001,-68.04167,-66.68333,-50.21667,-69.18333,-68.13333,-65.81667,-63.710252,-63.527964,-67.767554,-67.92124799999999,-47.85,-67.34999999999999,-46.76667,-68.991618],10,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":true,"riseOffset":250,"stroke":true,"color":"#03F","weight":5,"opacity.1":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},{"showCoverageOnHover":true,"zoomToBoundsOnClick":true,"spiderfyOnMaxZoom":true,"removeOutsideVisibleBounds":true,"spiderLegPolylineOptions":{"weight":1.5,"color":"#222","opacity":0.5},"freezeAtZoom":false},null,["<b>Amarete<\/b><br><b>Description:<\/b> Mire.<br><a href=http://apps.neotomadb.org/explorer/?siteids=32>Explorer Link<\/a>","<b>Lago do Aquiri<\/b><br><b>Description:<\/b> Natural lake, sometimes flooded by river. Physiography: soft rolling area with flood plains. Surrounding vegetation: anthropog. palm forest, swamp savanna.<br><a href=http://apps.neotomadb.org/explorer/?siteids=211>Explorer Link<\/a>","<b>Cala Conto<\/b><br><b>Description:<\/b> Interandean plain.<br><a href=http://apps.neotomadb.org/explorer/?siteids=323>Explorer Link<\/a>","<b>Chacaltaya 1<\/b><br><b>Description:<\/b> NA<br><a href=http://apps.neotomadb.org/explorer/?siteids=347>Explorer Link<\/a>","<b>Chacaltaya 2<\/b><br><b>Description:<\/b> NA<br><a href=http://apps.neotomadb.org/explorer/?siteids=348>Explorer Link<\/a>","<b>Cumbre Unduavi<\/b><br><b>Description:<\/b> NA<br><a href=http://apps.neotomadb.org/explorer/?siteids=523>Explorer Link<\/a>","<b>Lagoa das Patas<\/b><br><b>Description:<\/b> Lake, 300m x 7m on low inselberg. Physiography: small closed basin with flat bottom. Surrounding vegetation: dense, lowland tropical rain forest.<br><a href=http://apps.neotomadb.org/explorer/?siteids=532>Explorer Link<\/a>","<b>Serra Campos Gerais<\/b><br><b>Description:<\/b> Peat bog. Physiography: highland plain, next to a river vally. Surrounding vegetation: farmland.<br><a href=http://apps.neotomadb.org/explorer/?siteids=843>Explorer Link<\/a>","<b>Katantica<\/b><br><b>Description:<\/b> NA<br><a href=http://apps.neotomadb.org/explorer/?siteids=1406>Explorer Link<\/a>","<b>Río Kaluyo<\/b><br><b>Description:<\/b> NA<br><a href=http://apps.neotomadb.org/explorer/?siteids=1994>Explorer Link<\/a>","<b>Wasa Mayu<\/b><br><b>Description:<\/b> NA<br><a href=http://apps.neotomadb.org/explorer/?siteids=2827>Explorer Link<\/a>","<b>Laguna Granja<\/b><br><b>Description:<\/b> Oxbow lake 300 m from the modern San Martín River. Upland vegetation: seasonal southern Amazonian rainforest; immediate vegetation is riverine forest dominated by Vochysia mapirensis and Buchenavia oxycarpa; wider region dominated by closed-canopy terra firme evergreen rainforest, which is degraded by modern anthropogenic disturbance to a distance of 5 km from the lake. Littoral margins of the lake dominated by floating mats of aquatic vegetation, including Marsilea polycarpa and Eichhornia azurea. The ring-ditch archaeological site Granja del Padre lies 100 m from the eastern shore of the lake.<br><a href=http://apps.neotomadb.org/explorer/?siteids=9685>Explorer Link<\/a>","<b>Laguna Orícore<\/b><br><b>Description:<\/b> Large, shallow, flat-bottomed lake in the Beni Basin. Upland vegetation: seasonal southern Amazonian rainforest; the Beni Basin is seasonally inundated savanna mosaic. Terra firma pre-Cambrian shield outcrops at the northeast margin of the lake and lies 3 km north of the lake. The terra firma is covered with evergreen humid rainforest.<br><a href=http://apps.neotomadb.org/explorer/?siteids=9686>Explorer Link<\/a>","<b>Lake Valencia<\/b><br><b>Description:<\/b> Large graben. Physiography: valley between coastal mountains. Surrounding vegetation: savanna, crops and seral vegetation.<br><a href=http://apps.neotomadb.org/explorer/?siteids=11923>Explorer Link<\/a>","<b>Lake Chalalán<\/b><br><b>Description:<\/b> The lake, which lies approximately 10 m above the modern level of Rio Tuichi, has an oval basin c. 900 m long by 500 m at its widest part. This steepsided lake reaches depths of 5 m within 5 m of the current shoreline. Secchi depth in Lake Chalalan is reached at c. 2 m, suggesting mesotrophic conditions. Surrounding modern vegetation is lowland evergreen forest dominated by Iriartea deltoidea, Mauritia flexuosa, Oenocarpus bataua, Hura crepitans, Ceiba pentandra, Pentaplaris davidsmithii, and Cecropia spp. Located west of the rural community of Rurrenabaque in the Upper Beni River, in the Bolivian Amazon. Mean annual precipitation at Rurrenabaque is 2550 mm while mean annual temperature is 26°C.<br><a href=http://apps.neotomadb.org/explorer/?siteids=13964>Explorer Link<\/a>","<b>Lagoa da Curuça<\/b><br><b>Description:<\/b> Lake. Physiography: isolated lake, 15 km from the Atlantic. Surrounding vegetation: Amazon rain forest.<br><a href=http://apps.neotomadb.org/explorer/?siteids=526>Explorer Link<\/a>","<b>Monte Blanco<\/b><br><b>Description:<\/b> NA<br><a href=http://apps.neotomadb.org/explorer/?siteids=1717>Explorer Link<\/a>","<b>Lagoa Campestre de Salitre<\/b><br><b>Description:<\/b> Peat bog in a depression. Physiography: depression. Surrounding vegetation: semideciduous forest/dry forest.<br><a href=http://apps.neotomadb.org/explorer/?siteids=2248>Explorer Link<\/a>","<b>Lake Consuelo<\/b><br><b>Description:<\/b> Lake Consuelo is constantly immersed in ground-level clouds on most days and sits at 1360 m asl, 2500 m down slope from the Bolivian Altiplano and Lake Titicaca. The lake is located within a small, closed basin with moderately steep slopes that result in thin soils with duff layers thickening above 1400 m asl. Lake Consuelo is located very close to the Manu super-humid region identified by Killeen et al., (2007) as biodiversity hotspots.<br><a href=http://apps.neotomadb.org/explorer/?siteids=11877>Explorer Link<\/a>"],null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-24.66667,10.165756],"lng":[-69.18333,-44.98333]}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(brazil_datasets)) {</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>  <span class="fu">plotLeaflet</span>(brazil_datasets)</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;Datasets could not be retrieved due to an API error. Please try again later.&quot;</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>}</span></code></pre></div>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-c8029abd0caccb9eafb0" style="width:288px;height:288px;"></div>
+<script type="application/json" data-for="htmlwidget-c8029abd0caccb9eafb0">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[-15.23333,-3.16667,-17.56667,-16.36667,-16.36667,-16.35,0.26667,-24.66667,-14.8,-16.43333,-17.53333,-13.263406,-13.348328,10.165756,-14.428682,-0.76667,-17.025,-19,-13.951252],[-68.98333,-44.98333,-65.93333,-68.15000000000001,-68.15000000000001,-68.04167,-66.68333,-50.21667,-69.18333,-68.13333,-65.81667,-63.710252,-63.527964,-67.767554,-67.92124799999999,-47.85,-67.34999999999999,-46.76667,-68.991618],10,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":true,"riseOffset":250,"stroke":true,"color":"#03F","weight":5,"opacity.1":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},{"showCoverageOnHover":true,"zoomToBoundsOnClick":true,"spiderfyOnMaxZoom":true,"removeOutsideVisibleBounds":true,"spiderLegPolylineOptions":{"weight":1.5,"color":"#222","opacity":0.5},"freezeAtZoom":false},null,["<b>Amarete<\/b><br><b>Description:<\/b> Mire.<br><a href=http://apps.neotomadb.org/explorer/?siteids=32>Explorer Link<\/a>","<b>Lago do Aquiri<\/b><br><b>Description:<\/b> Natural lake, sometimes flooded by river. Physiography: soft rolling area with flood plains. Surrounding vegetation: anthropog. palm forest, swamp savanna.<br><a href=http://apps.neotomadb.org/explorer/?siteids=211>Explorer Link<\/a>","<b>Cala Conto<\/b><br><b>Description:<\/b> Interandean plain.<br><a href=http://apps.neotomadb.org/explorer/?siteids=323>Explorer Link<\/a>","<b>Chacaltaya 1<\/b><br><b>Description:<\/b> NA<br><a href=http://apps.neotomadb.org/explorer/?siteids=347>Explorer Link<\/a>","<b>Chacaltaya 2<\/b><br><b>Description:<\/b> NA<br><a href=http://apps.neotomadb.org/explorer/?siteids=348>Explorer Link<\/a>","<b>Cumbre Unduavi<\/b><br><b>Description:<\/b> NA<br><a href=http://apps.neotomadb.org/explorer/?siteids=523>Explorer Link<\/a>","<b>Lagoa das Patas<\/b><br><b>Description:<\/b> Lake, 300m x 7m on low inselberg. Physiography: small closed basin with flat bottom. Surrounding vegetation: dense, lowland tropical rain forest.<br><a href=http://apps.neotomadb.org/explorer/?siteids=532>Explorer Link<\/a>","<b>Serra Campos Gerais<\/b><br><b>Description:<\/b> Peat bog. Physiography: highland plain, next to a river vally. Surrounding vegetation: farmland.<br><a href=http://apps.neotomadb.org/explorer/?siteids=843>Explorer Link<\/a>","<b>Katantica<\/b><br><b>Description:<\/b> NA<br><a href=http://apps.neotomadb.org/explorer/?siteids=1406>Explorer Link<\/a>","<b>Río Kaluyo<\/b><br><b>Description:<\/b> NA<br><a href=http://apps.neotomadb.org/explorer/?siteids=1994>Explorer Link<\/a>","<b>Wasa Mayu<\/b><br><b>Description:<\/b> NA<br><a href=http://apps.neotomadb.org/explorer/?siteids=2827>Explorer Link<\/a>","<b>Laguna Granja<\/b><br><b>Description:<\/b> Oxbow lake 300 m from the modern San Martín River. Upland vegetation: seasonal southern Amazonian rainforest; immediate vegetation is riverine forest dominated by Vochysia mapirensis and Buchenavia oxycarpa; wider region dominated by closed-canopy terra firme evergreen rainforest, which is degraded by modern anthropogenic disturbance to a distance of 5 km from the lake. Littoral margins of the lake dominated by floating mats of aquatic vegetation, including Marsilea polycarpa and Eichhornia azurea. The ring-ditch archaeological site Granja del Padre lies 100 m from the eastern shore of the lake.<br><a href=http://apps.neotomadb.org/explorer/?siteids=9685>Explorer Link<\/a>","<b>Laguna Orícore<\/b><br><b>Description:<\/b> Large, shallow, flat-bottomed lake in the Beni Basin. Upland vegetation: seasonal southern Amazonian rainforest; the Beni Basin is seasonally inundated savanna mosaic. Terra firma pre-Cambrian shield outcrops at the northeast margin of the lake and lies 3 km north of the lake. The terra firma is covered with evergreen humid rainforest.<br><a href=http://apps.neotomadb.org/explorer/?siteids=9686>Explorer Link<\/a>","<b>Lake Valencia<\/b><br><b>Description:<\/b> Large graben. Physiography: valley between coastal mountains. Surrounding vegetation: savanna, crops and seral vegetation.<br><a href=http://apps.neotomadb.org/explorer/?siteids=11923>Explorer Link<\/a>","<b>Lake Chalalán<\/b><br><b>Description:<\/b> The lake, which lies approximately 10 m above the modern level of Rio Tuichi, has an oval basin c. 900 m long by 500 m at its widest part. This steepsided lake reaches depths of 5 m within 5 m of the current shoreline. Secchi depth in Lake Chalalan is reached at c. 2 m, suggesting mesotrophic conditions. Surrounding modern vegetation is lowland evergreen forest dominated by Iriartea deltoidea, Mauritia flexuosa, Oenocarpus bataua, Hura crepitans, Ceiba pentandra, Pentaplaris davidsmithii, and Cecropia spp. Located west of the rural community of Rurrenabaque in the Upper Beni River, in the Bolivian Amazon. Mean annual precipitation at Rurrenabaque is 2550 mm while mean annual temperature is 26°C.<br><a href=http://apps.neotomadb.org/explorer/?siteids=13964>Explorer Link<\/a>","<b>Lagoa da Curuça<\/b><br><b>Description:<\/b> Lake. Physiography: isolated lake, 15 km from the Atlantic. Surrounding vegetation: Amazon rain forest.<br><a href=http://apps.neotomadb.org/explorer/?siteids=526>Explorer Link<\/a>","<b>Monte Blanco<\/b><br><b>Description:<\/b> NA<br><a href=http://apps.neotomadb.org/explorer/?siteids=1717>Explorer Link<\/a>","<b>Lagoa Campestre de Salitre<\/b><br><b>Description:<\/b> Peat bog in a depression. Physiography: depression. Surrounding vegetation: semideciduous forest/dry forest.<br><a href=http://apps.neotomadb.org/explorer/?siteids=2248>Explorer Link<\/a>","<b>Lake Consuelo<\/b><br><b>Description:<\/b> Lake Consuelo is constantly immersed in ground-level clouds on most days and sits at 1360 m asl, 2500 m down slope from the Bolivian Altiplano and Lake Titicaca. The lake is located within a small, closed basin with moderately steep slopes that result in thin soils with duff layers thickening above 1400 m asl. Lake Consuelo is located very close to the Manu super-humid region identified by Killeen et al., (2007) as biodiversity hotspots.<br><a href=http://apps.neotomadb.org/explorer/?siteids=11877>Explorer Link<\/a>"],null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-24.66667,10.165756],"lng":[-69.18333,-44.98333]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="filtering-records" class="section level2">
@@ -8029,17 +8010,28 @@ with the set of records returned from our <code>get_datasets()</code>
 query, and then use the <code>filter</code> function in
 <code>neotoma2</code> to select only those datasets that are
 geochronologic:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>brazil_dates <span class="ot">&lt;-</span> neotoma2<span class="sc">::</span><span class="fu">filter</span>(brazil_datasets,</span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>  datasettype <span class="sc">==</span> <span class="st">&quot;geochronologic&quot;</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co"># or:</span></span>
-<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>brazil_dates <span class="ot">&lt;-</span> brazil_datasets <span class="sc">%&gt;%</span></span>
-<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>  neotoma2<span class="sc">::</span><span class="fu">filter</span>(datasettype <span class="sc">==</span> <span class="st">&quot;geochronologic&quot;</span>)</span>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(brazil_datasets)) {</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  brazil_dates <span class="ot">&lt;-</span> neotoma2<span class="sc">::</span><span class="fu">filter</span>(brazil_datasets,</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>                                   datasettype <span class="sc">==</span> <span class="st">&quot;geochronologic&quot;</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;Datasets could not be filtered due to a previous API error. Please try again later.&quot;</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>}</span>
 <span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co"># With boolean operators:</span></span>
-<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a>brazil_space <span class="ot">&lt;-</span> brazil_datasets <span class="sc">%&gt;%</span> neotoma2<span class="sc">::</span><span class="fu">filter</span>(lat <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">18</span> <span class="sc">&amp;</span> lat <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">16</span>)</span></code></pre></div>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co"># or:</span></span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(brazil_datasets)) {</span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a>  brazil_dates <span class="ot">&lt;-</span> brazil_datasets <span class="sc">%&gt;%</span></span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a>    neotoma2<span class="sc">::</span><span class="fu">filter</span>(datasettype <span class="sc">==</span> <span class="st">&quot;geochronologic&quot;</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;Datasets could not be filtered due to a previous API error. Please try again later.&quot;</span>)</span>
+<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a>}</span>
+<span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a><span class="co"># With boolean operators:</span></span>
+<span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(brazil_datasets)) {</span>
+<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a>  brazil_space <span class="ot">&lt;-</span> brazil_datasets <span class="sc">%&gt;%</span> neotoma2<span class="sc">::</span><span class="fu">filter</span>(lat <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">18</span> <span class="sc">&amp;</span> lat <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">16</span>)</span>
+<span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;Datasets could not be filtered due to a previous API error. Please try again later.&quot;</span>)</span>
+<span id="cb15-22"><a href="#cb15-22" tabindex="-1"></a>}</span></code></pre></div>
 <p>The <code>filter()</code> function takes as the first argument, a
 datasets object, followed by the criteria we want to use to filter.
 Current supported criteria includes:</p>
@@ -8191,19 +8183,28 @@ of taxa across sites. We might do something like this:</p>
 <span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a><span class="co"># functionality of the `sf` package.</span></span>
 <span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a>brazil_sf <span class="ot">&lt;-</span> geojsonsf<span class="sc">::</span><span class="fu">geojson_sf</span>(brazil)</span>
 <span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a></span>
-<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a>brazil_records <span class="ot">&lt;-</span> <span class="fu">get_datasets</span>(<span class="at">loc =</span> brazil_sf) <span class="sc">%&gt;%</span></span>
-<span id="cb16-15"><a href="#cb16-15" tabindex="-1"></a>  neotoma2<span class="sc">::</span><span class="fu">filter</span>(datasettype <span class="sc">==</span> <span class="st">&quot;pollen&quot;</span> <span class="sc">&amp;</span> age_range_young <span class="sc">&lt;=</span> <span class="dv">1000</span> <span class="sc">&amp;</span> age_range_old <span class="sc">&gt;=</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-16"><a href="#cb16-16" tabindex="-1"></a>  <span class="fu">get_downloads</span>(<span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb16-17"><a href="#cb16-17" tabindex="-1"></a></span>
-<span id="cb16-18"><a href="#cb16-18" tabindex="-1"></a>count_by_site <span class="ot">&lt;-</span> <span class="fu">samples</span>(brazil_records) <span class="sc">%&gt;%</span></span>
-<span id="cb16-19"><a href="#cb16-19" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(elementtype <span class="sc">==</span> <span class="st">&quot;pollen&quot;</span> <span class="sc">&amp;</span> units <span class="sc">==</span> <span class="st">&quot;NISP&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-20"><a href="#cb16-20" tabindex="-1"></a>  <span class="fu">group_by</span>(siteid, variablename) <span class="sc">%&gt;%</span></span>
-<span id="cb16-21"><a href="#cb16-21" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb16-22"><a href="#cb16-22" tabindex="-1"></a>  <span class="fu">group_by</span>(variablename) <span class="sc">%&gt;%</span></span>
-<span id="cb16-23"><a href="#cb16-23" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb16-24"><a href="#cb16-24" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
-<span id="cb16-25"><a href="#cb16-25" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;siteid&#39;. You can override using the</span></span>
-<span id="cb16-26"><a href="#cb16-26" tabindex="-1"></a><span class="co">#&gt; `.groups` argument.</span></span></code></pre></div>
+<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a>brazil_records <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>({</span>
+<span id="cb16-15"><a href="#cb16-15" tabindex="-1"></a>  <span class="fu">get_datasets</span>(<span class="at">loc =</span> brazil_sf) <span class="sc">%&gt;%</span></span>
+<span id="cb16-16"><a href="#cb16-16" tabindex="-1"></a>    neotoma2<span class="sc">::</span><span class="fu">filter</span>(datasettype <span class="sc">==</span> <span class="st">&quot;pollen&quot;</span> <span class="sc">&amp;</span> age_range_young <span class="sc">&lt;=</span> <span class="dv">1000</span> <span class="sc">&amp;</span> age_range_old <span class="sc">&gt;=</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-17"><a href="#cb16-17" tabindex="-1"></a>    <span class="fu">get_downloads</span>(<span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb16-18"><a href="#cb16-18" tabindex="-1"></a>}, <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb16-19"><a href="#cb16-19" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&quot;Failed to retrieve records for Brazil: &quot;</span>, e<span class="sc">$</span>message)</span>
+<span id="cb16-20"><a href="#cb16-20" tabindex="-1"></a>  <span class="cn">NULL</span></span>
+<span id="cb16-21"><a href="#cb16-21" tabindex="-1"></a>})</span>
+<span id="cb16-22"><a href="#cb16-22" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="#cb16-23" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(brazil_records)) {</span>
+<span id="cb16-24"><a href="#cb16-24" tabindex="-1"></a>  count_by_site <span class="ot">&lt;-</span> <span class="fu">samples</span>(brazil_records) <span class="sc">%&gt;%</span></span>
+<span id="cb16-25"><a href="#cb16-25" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(elementtype <span class="sc">==</span> <span class="st">&quot;pollen&quot;</span> <span class="sc">&amp;</span> units <span class="sc">==</span> <span class="st">&quot;NISP&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-26"><a href="#cb16-26" tabindex="-1"></a>    <span class="fu">group_by</span>(siteid, variablename) <span class="sc">%&gt;%</span></span>
+<span id="cb16-27"><a href="#cb16-27" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb16-28"><a href="#cb16-28" tabindex="-1"></a>    <span class="fu">group_by</span>(variablename) <span class="sc">%&gt;%</span></span>
+<span id="cb16-29"><a href="#cb16-29" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb16-30"><a href="#cb16-30" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
+<span id="cb16-31"><a href="#cb16-31" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb16-32"><a href="#cb16-32" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;Records could not be retrieved due to an API error. Please try again later.&quot;</span>)</span>
+<span id="cb16-33"><a href="#cb16-33" tabindex="-1"></a>}</span>
+<span id="cb16-34"><a href="#cb16-34" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;siteid&#39;. You can override using the</span></span>
+<span id="cb16-35"><a href="#cb16-35" tabindex="-1"></a><span class="co">#&gt; `.groups` argument.</span></span></code></pre></div>
 <p>In this code chunk we define the bounding polygon for our sites,
 filter by time and dataset type, and then return the full records for
 those sites. We get a <code>sites</code> object with dataset and sample
@@ -8247,13 +8248,7 @@ the API returns the publication(s) and creates a new
 <span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>two <span class="ot">&lt;-</span> <span class="fu">get_publications</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">14</span>))</span></code></pre></div>
 <p>From there we can then then subset and extract elements from the list
 using the standard <code>[[</code> format. For example:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>two[[<span class="dv">2</span>]]</span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="co">#&gt;   publicationid</span></span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="co">#&gt; 1            14</span></span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co">#&gt;                                                                                                                                                                                                      citation</span></span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="co">#&gt; 1 Baker, R.G., R.S. Rhodes II, D.P. Schwert, A.C. Ashworth, T.J. Frest, G.R. Hallberg, and J.A. Janssens. 1986. A full- glacial biota from southeastern Iowa, USA. Journal of Quaternary Science 1(2):91-107.</span></span>
-<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="co">#&gt;                      doi</span></span>
-<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co">#&gt; 1 10.1002/jqs.3390010202</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>two[[<span class="dv">2</span>]]</span></code></pre></div>
 <p>Will return the second publication in the list, corresponding to the
 publication with <code>publicationid</code> 14 in this case.</p>
 </div>
@@ -8286,13 +8281,7 @@ results:</p>
 <p>This returns the (Neotoma) ID, the citation and the publication DOI
 (if that is stored in Neotoma). We can get the first publication using
 the standard <code>[[</code> nomenclature:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>two[[<span class="dv">1</span>]]</span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="co">#&gt;   publicationid</span></span>
-<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="co">#&gt; 1            12</span></span>
-<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a><span class="co">#&gt;                                                                                                                          citation</span></span>
-<span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a><span class="co">#&gt; 1 King, J.E. 1973. Late Pleistocene palynology and biogeography of the western Missouri Ozarks. Ecological Monographs 43:539-565.</span></span>
-<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a><span class="co">#&gt;    doi</span></span>
-<span id="cb21-7"><a href="#cb21-7" tabindex="-1"></a><span class="co">#&gt; 1 &lt;NA&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>two[[<span class="dv">1</span>]]</span></code></pre></div>
 <p>The output will look similar to the output for <code>two</code>
 above, however you will see that only a single result will be returned
 and the class (for a single publication) will be of type
@@ -8304,25 +8293,7 @@ numeric vector (<code>c(1, 2, 3)</code>)):</p>
 <span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>pubArray <span class="ot">&lt;-</span> <span class="fu">get_publications</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="co"># Select the first five publications:</span></span>
 <span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>subPub <span class="ot">&lt;-</span> pubArray[[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]]</span>
-<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a>subPub</span>
-<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a><span class="co">#&gt;   publicationid</span></span>
-<span id="cb22-7"><a href="#cb22-7" tabindex="-1"></a><span class="co">#&gt; 1             1</span></span>
-<span id="cb22-8"><a href="#cb22-8" tabindex="-1"></a><span class="co">#&gt; 2             2</span></span>
-<span id="cb22-9"><a href="#cb22-9" tabindex="-1"></a><span class="co">#&gt; 3             3</span></span>
-<span id="cb22-10"><a href="#cb22-10" tabindex="-1"></a><span class="co">#&gt; 4             4</span></span>
-<span id="cb22-11"><a href="#cb22-11" tabindex="-1"></a><span class="co">#&gt; 5             5</span></span>
-<span id="cb22-12"><a href="#cb22-12" tabindex="-1"></a><span class="co">#&gt;                                                                                                                                                                                                                                                                                                                                                               citation</span></span>
-<span id="cb22-13"><a href="#cb22-13" tabindex="-1"></a><span class="co">#&gt; 1                                                                                                                                                                            International Organization for Standardization. 2006. Codes for the representation of names of countries and their subdivisions — Part 1: Country codes. ISO 3166-1, Geneva, Switzerland.</span></span>
-<span id="cb22-14"><a href="#cb22-14" tabindex="-1"></a><span class="co">#&gt; 2                                                                                                                                                                                                                                                                            United States Central Intelligence Agency. 2004. CIA World Factbook. Washington, DC, USA.</span></span>
-<span id="cb22-15"><a href="#cb22-15" tabindex="-1"></a><span class="co">#&gt; 3                                                                                                                                         Davis, M.B. 1978. Climatic interpretation of pollen in Quaternary sediments. Pages 35-51 in D. Walker and J.C. Guppy, editors. Biology and Quaternary environments. Australian Academy of Science, Canberra City, Australia.</span></span>
-<span id="cb22-16"><a href="#cb22-16" tabindex="-1"></a><span class="co">#&gt; 4 Nanavati, W., C. Whitlock, V. Outes, and G. Villarosa. 2011. Diatom-inferred wind activity at Lac du Sommet, southern Québec, Canada: A multiproxy paleoclimate reconstruction based on diatoms, chironomids, and pollen for the past 9500 years. The Holocene 21(6):925-938. http://hol.sagepub.com/content/21/6/925.full.pdf+html. [DOI: 10.1177/0959683611400199]</span></span>
-<span id="cb22-17"><a href="#cb22-17" tabindex="-1"></a><span class="co">#&gt; 5                                                                                                                                                                                                Janssen, C.R. 1968. Myrtle Lake: a late- and post-glacial pollen diagram from northern Minnesota. Canadian Journal of Botany 46(11):1397-1410. [DOI: 10.1139/b68-190]</span></span>
-<span id="cb22-18"><a href="#cb22-18" tabindex="-1"></a><span class="co">#&gt;                        doi</span></span>
-<span id="cb22-19"><a href="#cb22-19" tabindex="-1"></a><span class="co">#&gt; 1                     &lt;NA&gt;</span></span>
-<span id="cb22-20"><a href="#cb22-20" tabindex="-1"></a><span class="co">#&gt; 2                     &lt;NA&gt;</span></span>
-<span id="cb22-21"><a href="#cb22-21" tabindex="-1"></a><span class="co">#&gt; 3                     &lt;NA&gt;</span></span>
-<span id="cb22-22"><a href="#cb22-22" tabindex="-1"></a><span class="co">#&gt; 4 10.1177/0959683611400199</span></span>
-<span id="cb22-23"><a href="#cb22-23" tabindex="-1"></a><span class="co">#&gt; 5          10.1139/b68-190</span></span></code></pre></div>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a>subPub</span></code></pre></div>
 </div>
 <div id="create-or-import-new-publications" class="section level4">
 <h4>Create (or Import) New Publications</h4>
@@ -8333,9 +8304,9 @@ you can enter as much or as little of the article metadata as you’d
 like, but it’s designed (in part) to use the CrossRef API to return
 information from a DOI.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>new_pub <span class="ot">&lt;-</span> <span class="fu">set_publications</span>(</span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>  <span class="at">articletitle =</span> <span class="st">&quot;Myrtle Lake: a late- and post-glacial pollen diagram from northern Minnesota&quot;</span>,</span>
-<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>  <span class="at">journal =</span> <span class="st">&quot;Canadian Journal of Botany&quot;</span>,</span>
-<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a>  <span class="at">volume =</span> <span class="dv">46</span>)</span></code></pre></div>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="at">articletitle =</span> <span class="st">&quot;Myrtle Lake: a late- and post-glacial pollen diagram from northern Minnesota&quot;</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="at">journal =</span> <span class="st">&quot;Canadian Journal of Botany&quot;</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a><span class="at">volume =</span> <span class="dv">46</span>)</span></code></pre></div>
 <p>A <code>publication</code> has a large number of slots that can be
 defined. These may be left blank, they may be set directly after the
 publication is defined:</p>
@@ -8346,86 +8317,60 @@ publication is defined:</p>
 <div id="workshops-and-code-examples" class="section level2">
 <h2>Workshops and Code Examples</h2>
 <ul>
-<li>2022 International AL/IPA Meeting; Bariloche, Argentina
-<ul>
+<li>2022 International AL/IPA Meeting; Bariloche, Argentina</li>
 <li><a href="https://open.neotomadb.org/Workshops/IAL_IPA-November2022/simple_workflow.html">English
-Language Simple Workflow</a>
-<ul>
+Language Simple Workflow</a></li>
 <li>Topics: Simple search, climate gradients, stratigraphic
 plotting</li>
 <li>Spatial Domain: South America</li>
 <li>Dataset Types: Diatoms</li>
-</ul></li>
 <li><a href="https://open.neotomadb.org/Workshops/IAL_IPA-November2022/simple_workflow_ES.html">Spanish
-Language Simple Workflow</a>
-<ul>
+Language Simple Workflow</a></li>
 <li>Topics: Simple search, climate gradients, stratigraphic
 plotting</li>
 <li>Spatial Domain: South America</li>
 <li>Dataset Types: Diatoms</li>
-</ul></li>
 <li><a href="https://open.neotomadb.org/Workshops/IAL_IPA-November2022/complex_workflow.html">English
-Language Complex Workflow</a>
-<ul>
+Language Complex Workflow</a></li>
 <li>Topics: Chronology building, Bchron</li>
 <li>Spatial Domain: South America</li>
 <li>Dataset Types: Diatoms</li>
-</ul></li>
 <li><a href="https://open.neotomadb.org/Workshops/IAL_IPA-November2022/complex_workflow_ES.html">Spanish
-Language Complex Workflow</a>
-<ul>
+Language Complex Workflow</a></li>
 <li>Topics: Chronology building, Bchron</li>
 <li>Spatial Domain: South America</li>
 <li>Dataset Types: Diatoms</li>
-</ul></li>
-</ul></li>
-<li>2022 European Pollen Database Meeting; Prague, Czech Republic
-<ul>
+<li>2022 European Pollen Database Meeting; Prague, Czech Republic</li>
 <li><a href="https://open.neotomadb.org/Workshops/EPD-May2022/simple_workflow.html">English
-Language Simple Workflow</a>
-<ul>
+Language Simple Workflow</a></li>
 <li>Topics: Simple search, climate gradients, stratigraphic plotting,
 taxonomic harmonization</li>
 <li>Spatial Domain: Europe/Czech Republic</li>
 <li>Dataset Types: Pollen</li>
-</ul></li>
 <li><a href="https://open.neotomadb.org/Workshops/EPD-May2022/complex_workflow.html">English
-Language Complex Workflow</a>
-<ul>
+Language Complex Workflow</a></li>
 <li>Topics: Chronology building, Bchron</li>
 <li>Spatial Domain: Europe/Czech Republic</li>
 <li>Dataset Types: Pollen</li>
-</ul></li>
-</ul></li>
-<li>2022 American Quaternary Association Meeting
-<ul>
+<li>2022 American Quaternary Association Meeting</li>
 <li><a href="https://open.neotomadb.org/Workshops/AMQUA-June2022/simple_workflow.html">English
-Language Simple Workflow</a>
-<ul>
+Language Simple Workflow</a></li>
 <li>Topics: Simple search, climate gradients, stratigraphic
 plotting</li>
 <li>Spatial Domain: North America</li>
 <li>Dataset Types: Pollen</li>
-</ul></li>
 <li><a href="https://open.neotomadb.org/Workshops/AMQUA-June2022/complex_workflow.html">English
-Language Complex Workflow</a>
-<ul>
+Language Complex Workflow</a></li>
 <li>Topics: Chronologies</li>
 <li>Spatial Domain: North America</li>
 <li>Dataset Types: Pollen</li>
-</ul></li>
-</ul></li>
 <li>Neotoma-charcoal Workshop, Göttingen, Germany. Authors: Petr Kuneš
-&amp; Thomas Giesecke
-<ul>
+&amp; Thomas Giesecke</li>
 <li><a href="https://rpubs.com/petrkunes/neotoma-charcoal">English
-Language Workflow</a>
-<ul>
+Language Workflow</a></li>
 <li>Topics: Simple Search, PCA, DCA, Charcoal/Pollen Correlation</li>
 <li>Spatial Domain: Global/Czech Republic</li>
 <li>Dataset Types: Pollen, Charcoal</li>
-</ul></li>
-</ul></li>
 </ul>
 </div>
 
