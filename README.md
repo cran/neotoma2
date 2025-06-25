@@ -43,8 +43,6 @@ Package use requires the use of the `devtools::install_github()` function, to pu
 ```r
 devtools::install_github('NeotomaDB/neotoma2', build_vignettes = TRUE)
 ```
-To see the rendered vignette, you can also visit the following site:
-[https://open.neotomadb.org/neotoma2/inst/doc/neotoma2-package.html](https://open.neotomadb.org/neotoma2/inst/doc/neotoma2-package.html)
 
 The expectation for this repository is that all commits to the `prod` branch will support a clean package build.  This is supported through [GitHub Actions](https://github.com/NeotomaDB/neotoma2/actions) in the `.github` folder of the repository.
 
@@ -74,6 +72,8 @@ The `neotoma2` R package pulls data from the [Neotoma Paleoecology Database](htt
 
 This project is to be evaluated using the following metrics:
 
+* Maintenance Github 1.0.6 release **DONE** June 23, 2025
+* Maintenance Github 1.0.5 release, **DONE** December 27, 2024
 * Maintenance Github 1.0.4 release, **DONE** July 23, 2024
 * Updated production Branch with CRAN changes, May 24, 2024.
 * Maintenance Github 1.0.3 release, **DONE** February 28, 2024

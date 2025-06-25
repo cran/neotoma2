@@ -4,6 +4,30 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
+# Check if the API is available
+# otherwise, set up eval=False
+api_available <- FALSE
+try({
+  res = pingNeotoma()
+  if(res$status_code==200){
+    api_available <- TRUE
+  }
+}, silent = TRUE)
+
+knitr::knit_hooks$set(eval = function(before, options, envir) {
+  if(!api_available) 
+    return(FALSE)
+  options$eval  # fallback to original
+})
+
+# Set global chunk options
+knitr::opts_chunk$set(eval = TRUE)
+
+## ----setup_md, include=FALSE--------------------------------------------------
+safe_eval <- function(expr, fallback = "N/A") {
+  tryCatch(eval(expr, envir = .GlobalEnv), error = function(e) fallback)
+}
+
 ## ----setup, include=FALSE-----------------------------------------------------
 library(sf)
 library(geojsonsf)
@@ -28,12 +52,12 @@ alex <- get_sites(sitename = 'Alex%')
 alex
 
 ## ----agebounds, eval=FALSE----------------------------------------------------
-#  # Note, we are using the `all_data = TRUE` flag here to avoid the default limit of 25 records, discussed below.
-#  # Because these queries are searching through every record they are slow and and are not
-#  # run in knitting this vignette.
-#  get_sites(ageof = 8200, all_data = TRUE) %>% length()
-#  get_sites(ageyounger = 5000, ageolder = 8000, all_data = TRUE) %>% length()
-#  get_sites(minage = 5000, maxage = 8000, all_data = TRUE) %>% length()
+# # Note, we are using the `all_data = TRUE` flag here to avoid the default limit of 25 records, discussed below.
+# # Because these queries are searching through every record they are slow and and are not
+# # run in knitting this vignette.
+# get_sites(ageof = 8200, all_data = TRUE) %>% length()
+# get_sites(ageyounger = 5000, ageolder = 8000, all_data = TRUE) %>% length()
+# get_sites(minage = 5000, maxage = 8000, all_data = TRUE) %>% length()
 
 ## ----extractElement-----------------------------------------------------------
 alex <- get_sites(sitename = "Alexander Lake")
@@ -79,12 +103,12 @@ my_pollen_datasets <- get_datasets(datasettype = "pollen", limit = 25)
 my_pollen_datasets
 
 ## ----all_data, eval=FALSE-----------------------------------------------------
-#  allSites_dt <- get_sites(datasettype = "diatom")
-#  allSites_dt_all <- get_sites(datasettype = "diatom", all_data = TRUE)
-#  
-#  # Because we used the `all_data = TRUE` flag, there will be more sites
-#  # in allSites_dt_all, because it represents all sites containing diatom datasets.
-#  length(allSites_dt_all) > length(allSites_dt)
+# allSites_dt <- get_sites(datasettype = "diatom")
+# allSites_dt_all <- get_sites(datasettype = "diatom", all_data = TRUE)
+# 
+# # Because we used the `all_data = TRUE` flag, there will be more sites
+# # in allSites_dt_all, because it represents all sites containing diatom datasets.
+# length(allSites_dt_all) > length(allSites_dt)
 
 ## ----boundingBox--------------------------------------------------------------
 brazil <- '{"type": "Polygon", 
@@ -175,11 +199,11 @@ if (!is.null(brazil_records)) {
 }
 
 ## ----pubsbyid, eval=FALSE-----------------------------------------------------
-#  one <- get_publications(12)
-#  two <- get_publications(c(12, 14))
+# one <- get_publications(12)
+# two <- get_publications(c(12, 14))
 
 ## ----showSinglePub, eval=FALSE------------------------------------------------
-#  two[[2]]
+# two[[2]]
 
 ## ----fulltestPubSearch--------------------------------------------------------
 michPubs <- get_publications(search = "Michigan", limit = 2)
@@ -188,21 +212,21 @@ michPubs <- get_publications(search = "Michigan", limit = 2)
 noise <- get_publications(search = "Canada Banada Nanada", limit = 5)
 
 ## ----getSecondPub, eval=FALSE-------------------------------------------------
-#  two[[1]]
+# two[[1]]
 
 ## ----subsetPubs, eval=FALSE---------------------------------------------------
-#  # Select publications with Neotoma Publication IDs 1 - 10.
-#  pubArray <- get_publications(1:10)
-#  # Select the first five publications:
-#  subPub <- pubArray[[1:5]]
-#  subPub
+# # Select publications with Neotoma Publication IDs 1 - 10.
+# pubArray <- get_publications(1:10)
+# # Select the first five publications:
+# subPub <- pubArray[[1:5]]
+# subPub
 
 ## ----setNewPub, eval=FALSE----------------------------------------------------
-#  new_pub <- set_publications(
-#  articletitle = "Myrtle Lake: a late- and post-glacial pollen diagram from northern Minnesota",
-#  journal = "Canadian Journal of Botany",
-#  volume = 46)
+# new_pub <- set_publications(
+# articletitle = "Myrtle Lake: a late- and post-glacial pollen diagram from northern Minnesota",
+# journal = "Canadian Journal of Botany",
+# volume = 46)
 
 ## ----setPubValue, eval=FALSE--------------------------------------------------
-#  new_pub@pages <- "1397-1410"
+# new_pub@pages <- "1397-1410"
 

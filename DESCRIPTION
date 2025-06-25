@@ -1,7 +1,7 @@
 Package: neotoma2
 Title: Working with the Neotoma Paleoecology Database
-Date: 2024-08-14
-Version: 1.0.5
+Date: 2025-06-23
+Version: 1.0.6
 Authors@R: 
     c(person(given = "Dominguez Vidana",
              family = "Socorro",
@@ -19,17 +19,17 @@ Description: Access and manipulation of data using the Neotoma Paleoecology Data
         <https://api.neotomadb.org/api-docs/>.
 License: MIT + file LICENSE
 Encoding: UTF-8
-RoxygenNote: 7.3.1
-Suggests: testthat, knitr, pkgdown, rmarkdown, Bchron, ggplot2, covr
+RoxygenNote: 7.3.2
+Suggests: testthat, knitr, pkgdown, rmarkdown, ggplot2, Bchron, covr
 Imports: rlang, magrittr, sf, geojsonsf, purrr, lubridate, httr,
         jsonlite, methods, dplyr, gtools, leaflet, assertthat, stringr,
-        progress, wk, uuid, tidyr
+        progress, wk, uuid, utils, tidyr
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2024-08-20 18:25:19 UTC; sedv8808
-Author: Dominguez Vidana Socorro [aut, cre]
-    (<https://orcid.org/0000-0002-7926-4935>),
-  Simon Goring [aut] (<https://orcid.org/0000-0002-2700-4605>)
+Packaged: 2025-06-25 00:09:28 UTC; sedv8808
+Author: Dominguez Vidana Socorro [aut, cre] (ORCID:
+    <https://orcid.org/0000-0002-7926-4935>),
+  Simon Goring [aut] (ORCID: <https://orcid.org/0000-0002-2700-4605>)
 Maintainer: Dominguez Vidana Socorro <s.dominguez@ht-data.com>
 Repository: CRAN
-Date/Publication: 2024-08-20 22:00:02 UTC
+Date/Publication: 2025-06-25 12:00:06 UTC
