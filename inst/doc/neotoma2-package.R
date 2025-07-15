@@ -73,6 +73,7 @@ alex[[1]]$area
 
 # Modify a value using [<- assignment:
 alex[[1]]["area"] <- 30
+alex[[1]]$area
 # alex[[1]][7] <- 30  This fails because the `Notes` field expects a character string.
 
 ## ----setsitefunction----------------------------------------------------------
@@ -125,43 +126,22 @@ brazil <- '{"type": "Polygon",
 brazil_sf <- geojsonsf::geojson_sf(brazil)
 
 
-brazil_datasets <- tryCatch({
-  get_datasets(loc = brazil_sf)
-}, error = function(e) {
-  message("Failed to retrieve datasets for Brazil: ", e$message)
-  NULL
-})
+brazil_datasets <- get_datasets(loc = brazil_sf)
 
 ## ----leafletBrazil------------------------------------------------------------
-if (!is.null(brazil_datasets)) {
-  plotLeaflet(brazil_datasets)
-} else {
-  cat("Datasets could not be retrieved due to an API error. Please try again later.")
-}
+plotLeaflet(brazil_datasets)
 
 ## ----filterBrazil-------------------------------------------------------------
 
-if (!is.null(brazil_datasets)) {
-  brazil_dates <- neotoma2::filter(brazil_datasets,
+brazil_dates <- neotoma2::filter(brazil_datasets,
                                    datasettype == "geochronologic")
-} else {
-  cat("Datasets could not be filtered due to a previous API error. Please try again later.")
-}
 
 # or:
-if (!is.null(brazil_datasets)) {
-  brazil_dates <- brazil_datasets %>%
+brazil_dates <- brazil_datasets %>%
     neotoma2::filter(datasettype == "geochronologic")
-} else {
-  cat("Datasets could not be filtered due to a previous API error. Please try again later.")
-}
 
 # With boolean operators:
-if (!is.null(brazil_datasets)) {
-  brazil_space <- brazil_datasets %>% neotoma2::filter(lat > -18 & lat < -16)
-} else {
-  cat("Datasets could not be filtered due to a previous API error. Please try again later.")
-}
+brazil_space <- brazil_datasets %>% neotoma2::filter(lat > -18 & lat < -16)
 
 ## ----filterAndShowTaxa--------------------------------------------------------
 brazil <- '{"type": "Polygon", 
@@ -177,26 +157,19 @@ brazil <- '{"type": "Polygon",
 # functionality of the `sf` package.
 brazil_sf <- geojsonsf::geojson_sf(brazil)
 
-brazil_records <- tryCatch({
-  get_datasets(loc = brazil_sf) %>%
+brazil_records <- get_datasets(loc = brazil_sf, all_data=TRUE) %>%
     neotoma2::filter(datasettype == "pollen" & age_range_young <= 1000 & age_range_old >= 10000) %>%
-    get_downloads(verbose = FALSE)
-}, error = function(e) {
-  message("Failed to retrieve records for Brazil: ", e$message)
-  NULL
-})
+    get_downloads()
 
-if (!is.null(brazil_records)) {
-  count_by_site <- samples(brazil_records) %>%
-    dplyr::filter(elementtype == "pollen" & units == "NISP") %>%
-    group_by(siteid, variablename) %>%
-    summarise(n = n()) %>%
-    group_by(variablename) %>%
-    summarise(n = n()) %>%
-    arrange(desc(n))
-} else {
-  cat("Records could not be retrieved due to an API error. Please try again later.")
-}
+
+count_by_site <- samples(brazil_records) %>%
+  dplyr::filter(elementtype == "pollen" & units == "NISP") %>%
+  group_by(siteid, variablename) %>%
+  summarise(n = n()) %>%
+  group_by(variablename) %>%
+  summarise(n = n()) %>%
+  arrange(desc(n))
+
 
 ## ----pubsbyid, eval=FALSE-----------------------------------------------------
 # one <- get_publications(12)
