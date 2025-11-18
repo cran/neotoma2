@@ -2,9 +2,15 @@
 % Please edit documentation in R/get_downloads.R
 \name{get_downloads}
 \alias{get_downloads}
+\alias{get_downloads.numeric}
+\alias{get_downloads.sites}
 \title{get_downloads}
 \usage{
-get_downloads(x = NA, verbose = TRUE, ...)
+get_downloads(x, verbose = TRUE, ...)
+
+\method{get_downloads}{numeric}(x, ...)
+
+\method{get_downloads}{sites}(x, verbose = TRUE, ...)
 }
 \arguments{
 \item{x}{Use a single number to extract site information}
@@ -47,7 +53,7 @@ following detail of information:
 \item{ \code{metadata} }{dataset metadata}
 }
 \description{
-Information for Fossil Datasets
+Download \code{sites} objects up to datum and chronology detail level.
 }
 \details{
 The \code{get_downloads()} command wraps the Neotoma API
@@ -64,8 +70,11 @@ For the complete records, use \code{all_data=TRUE}
 \examples{
 \donttest{
 # To find the downloads object of dataset 24:
-downloads24 <- get_downloads(24)
-
+tryCatch({
+  downloads24 <- get_downloads(24)
+}, error = function(e) {
+ message("Neotoma server not responding. Try again later.")
+})
 # To find all downloads in Brazil
 brazil <- '{"type": "Polygon",
 "coordinates": [[
@@ -74,8 +83,12 @@ brazil <- '{"type": "Polygon",
  [-36.5625,-7.710991655433217],
  [-68.203125,13.923403897723347],
  [-73.125,-9.102096738726443]]]}'
-brazil_datasets <- get_datasets(loc = brazil[1])
-brazil_downloads <- get_downloads(brazil_datasets)
+tryCatch({
+  brazil_datasets <- get_datasets(loc = brazil[1])
+  brazil_downloads <- get_downloads(brazil_datasets)
+}, error = function(e) {
+  message("Neotoma server not responding. Try again later.")
+})
 }
 }
 \author{

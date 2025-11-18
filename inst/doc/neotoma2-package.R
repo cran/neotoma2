@@ -135,7 +135,6 @@ plotLeaflet(brazil_datasets)
 
 brazil_dates <- neotoma2::filter(brazil_datasets,
                                    datasettype == "geochronologic")
-
 # or:
 brazil_dates <- brazil_datasets %>%
     neotoma2::filter(datasettype == "geochronologic")

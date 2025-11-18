@@ -17,7 +17,16 @@ Obtain all samples within a sites object
 }
 \examples{
 {
+tryCatch({
 dw <- get_downloads(1)
 pollen <- samples(dw)
+}, error = function(e) {
+ message("Neotoma server not responding. Try again later.")
+})
 }
+}
+\author{
+Socorro Dominguez \email{dominguezvid@wisc.edu}
+
+Simon Goring \email{goring@wisc.edu}
 }

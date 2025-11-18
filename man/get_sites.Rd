@@ -2,9 +2,15 @@
 % Please edit documentation in R/get_sites.R
 \name{get_sites}
 \alias{get_sites}
+\alias{get_sites.numeric}
+\alias{get_sites.default}
 \title{get_sites}
 \usage{
 get_sites(x = NA, ...)
+
+\method{get_sites}{numeric}(x, ...)
+
+\method{get_sites}{default}(...)
 }
 \arguments{
 \item{x}{Use a single integer or vector of integers representing
@@ -27,7 +33,7 @@ limited collection units information.
 }
 }
 \description{
-The get_sites() function is a wrapper for the Neotoma \code{sites} API
+The \code{get_sites} function is a wrapper for the Neotoma \code{sites} API
 endpoint.
 The function takes parameters defined by the user and returns a list
 of site information supplied by the Neotoma Paleoecological Database.
@@ -47,7 +53,8 @@ parameters:
 \item \code{siteid}  The unique site ID (integer) in Neotoma. Can be passed as a
 vector of site IDs.
 \item \code{sitename}  The site name, or approximate match using the \% wildcard.
-\item \code{database}  The constituent database for the record. See \code{get_table("constituentdatabases")}
+\item \code{database}  The constituent database for the record.
+See \code{get_table("constituentdatabases")}
 \item \code{altmin}  The minimum altitude range for site elevation (in meters).
 \item \code{altmax}  The maximum altitude range for site elevation (in meters).
 \item \code{datasetid}  The unique dataset ID (integer) in Neotoma. Can be passed
@@ -80,10 +87,18 @@ and datasets located at that site.
 \examples{
 \donttest{
 ## Find sites with a min altitude of 12m and a max altitude of 25m
-sites_12to25 <- get_sites(altmin=12, altmax=25)
+tryCatch({
+  sites_12to25 <- get_sites(altmin=12, altmax=25)
+}, error = function(e) {
+  message("Neotoma server not responding. Try again later.")
+})
 ## Return all sites, using a minimum altitude of 2500m (returns >500 sites):
-sites_2500 <- get_sites(altmin=2500, all_data = TRUE)
-## To find sites in Brazil
+tryCatch({
+  sites_2500 <- get_sites(altmin=2500, all_data = TRUE)
+}, error = function(e) {
+  message("Neotoma server not responding. Try again later.")
+})
+  ## To find sites in Brazil
 brazil <- '{"type": "Polygon",
 "coordinates": [[
  [-73.125, -9.102096738726443],
@@ -91,8 +106,8 @@ brazil <- '{"type": "Polygon",
  [-36.5625,-7.710991655433217],
  [-68.203125,13.923403897723347],
  [-73.125,-9.102096738726443]]]}'
+tryCatch({
 brazil_sites <- get_sites(loc = brazil[1])
-
 # Finding all sites with Liliaceae pollen in 1000 year bins:
 lilysites <- c()
 for (i in seq(0, 10000, by = 1000)) {
@@ -102,6 +117,9 @@ for (i in seq(0, 10000, by = 1000)) {
                     all_data = TRUE)
   lilysites <- c(lilysites, length(lily))
 }
+}, error = function(e) {
+  message("Neotoma server not responding. Try again later.")
+})
 }
 }
 \author{

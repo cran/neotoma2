@@ -1,12 +1,12 @@
 Package: neotoma2
 Title: Working with the Neotoma Paleoecology Database
-Date: 2025-07-14
-Version: 1.0.7
+Date: 2025-11-15
+Version: 1.0.8
 Authors@R: 
     c(person(given = "Dominguez Vidana",
              family = "Socorro",
              role = c("aut", "cre"),
-             email = "s.dominguez@ht-data.com",
+             email = "dominguezvid@wisc.edu",
              comment = structure("0000-0002-7926-4935", .Names = "ORCID")),
       person(given = "Simon",
              family = "Goring",
@@ -19,17 +19,17 @@ Description: Access and manipulation of data using the Neotoma Paleoecology Data
         <https://api.neotomadb.org/api-docs/>.
 License: MIT + file LICENSE
 Encoding: UTF-8
-RoxygenNote: 7.3.2
-Suggests: testthat, knitr, pkgdown, rmarkdown, ggplot2, Bchron, covr
-Imports: rlang, magrittr, sf, digest, geojsonsf, purrr, lubridate,
-        httr, jsonlite, methods, dplyr, gtools, leaflet, assertthat,
-        stringr, progress, uuid, utils, tidyr
+RoxygenNote: 7.3.3
+Suggests: testthat, knitr, pkgdown, rmarkdown, ggplot2, Bchron, covr,
+Imports: rlang, magrittr, sf, digest, geojsonsf, purrr, httr, jsonlite,
+        methods, dplyr, leaflet, assertthat, stringr, progress, uuid,
+        utils, tidyr
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2025-07-14 23:39:00 UTC; sedv8808
+Packaged: 2025-11-16 01:20:28 UTC; sedv8808
 Author: Dominguez Vidana Socorro [aut, cre] (ORCID:
     <https://orcid.org/0000-0002-7926-4935>),
   Simon Goring [aut] (ORCID: <https://orcid.org/0000-0002-2700-4605>)
-Maintainer: Dominguez Vidana Socorro <s.dominguez@ht-data.com>
+Maintainer: Dominguez Vidana Socorro <dominguezvid@wisc.edu>
 Repository: CRAN
-Date/Publication: 2025-07-15 03:30:02 UTC
+Date/Publication: 2025-11-18 08:50:02 UTC
