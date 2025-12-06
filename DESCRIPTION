@@ -1,7 +1,7 @@
 Package: neotoma2
 Title: Working with the Neotoma Paleoecology Database
-Date: 2025-11-25
-Version: 1.0.9
+Date: 2025-12-05
+Version: 1.0.10
 Authors@R: 
     c(person(given = "Dominguez Vidana",
              family = "Socorro",
@@ -26,10 +26,10 @@ Imports: rlang, magrittr, sf, digest, geojsonsf, purrr, httr, jsonlite,
         utils, tidyr
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2025-11-25 23:27:22 UTC; sedv8808
+Packaged: 2025-12-05 18:16:57 UTC; sedv8808
 Author: Dominguez Vidana Socorro [aut, cre] (ORCID:
     <https://orcid.org/0000-0002-7926-4935>),
   Simon Goring [aut] (ORCID: <https://orcid.org/0000-0002-2700-4605>)
 Maintainer: Dominguez Vidana Socorro <dominguezvid@wisc.edu>
 Repository: CRAN
-Date/Publication: 2025-11-25 23:50:02 UTC
+Date/Publication: 2025-12-06 15:10:02 UTC

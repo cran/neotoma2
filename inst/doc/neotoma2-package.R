@@ -1,38 +1,26 @@
-## ----setOpts, include = FALSE-------------------------------------------------
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-
-# Check if the API is available
-# otherwise, set up eval=False
-api_available <- FALSE
-try({
-  res = pingNeotoma()
-  if(res$status_code==200){
-    api_available <- TRUE
-  }
-}, silent = TRUE)
-
-knitr::knit_hooks$set(eval = function(before, options, envir) {
-  if(!api_available) 
-    return(FALSE)
-  options$eval  # fallback to original
-})
-
-# Set global chunk options
-knitr::opts_chunk$set(eval = TRUE)
-
-## ----setup_md, include=FALSE--------------------------------------------------
-safe_eval <- function(expr, fallback = "N/A") {
-  tryCatch(eval(expr, envir = .GlobalEnv), error = function(e) fallback)
-}
-
 ## ----setup, include=FALSE-----------------------------------------------------
 library(sf)
 library(geojsonsf)
 library(dplyr)
 library(neotoma2)
+
+## ----setOpts, include = FALSE-------------------------------------------------
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+api_available <- FALSE
+res <- pingNeotoma()
+if (res$status_code == 200) {
+    api_available <- TRUE
+  }
+# Disable evaluation globally if API is down
+knitr::opts_chunk$set(eval = api_available)
+
+## ----setup_md, include=FALSE--------------------------------------------------
+safe_eval <- function(expr, fallback = "N/A") {
+  tryCatch(eval(expr, envir = .GlobalEnv), error = function(e) fallback)
+}
 
 ## ----getSiteBySiteID----------------------------------------------------------
 # Search for site by a single numeric ID:
