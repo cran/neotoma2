@@ -1,5 +1,11 @@
 # News neotoma2 R package
 
+## neotoma2 1.0.11
+
+Set examples to \dontrun{} to avoid violating CRAN's policy that allows access to internet.
+Set vignettes to `eval=FALSE` as to avoid calling APIs that require access to internet.
+Set all tests that require API call to `skip on CRAN`.
+
 ## neotoma2 1.0.10
 
 Fixed tests to not be run on CRAN as API may be down.
