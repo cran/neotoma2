@@ -1,7 +1,7 @@
-054557c1ca49ab68dfeba708e9b1ffdc *DESCRIPTION
+cc7862463999b2e9e780808a7d563c21 *DESCRIPTION
 98d2d018e1fb08494e8caa2a346af9d0 *LICENSE
 8655939d9383969b7615f053c3e18686 *NAMESPACE
-4c6c7c61ea12ebcefdb3dc27f6f416a2 *NEWS.md
+b3ab5e68821d5f79a710697df73aa71e *NEWS.md
 876b0e9c73caeebd7609031628435b0f *R/01_classDefinitions.R
 2deb210927823a76fc17259508b322a7 *R/02_genericDefinitions.R
 2eb1e4207e36c370314dbf83ffb0ff04 *R/build_chron.R
@@ -66,12 +66,12 @@ eb782aaa118ee01dcc34aa4a47fe1bac *R/testNull.R
 f177a8239d86a356c9b5077326c7c092 *R/toWide.R
 2b12bb376de2c9eb4ee7d7d32006ed47 *R/use_na.R
 1d5c68a3b804aa3a52dbb1e5412b3bf5 *R/utils-pipe.R
-ac18c40f13bb1748095106a3cba63c35 *README.md
+a7d38dfd8263189d1e2f677be9561bfd *README.md
 033497ff9d820348b79a13559b6ac8e5 *build/vignette.rds
 015b415c4a29884b64b66131b9e99fd1 *inst/CITATION
 c50ce1eaf6fbf6d1c88e10075a49d945 *inst/doc/neotoma2-package.R
-e921a5f29e891ff8b5c4e73f4d360455 *inst/doc/neotoma2-package.Rmd
-20733fafbbbeed880597add00dafaac4 *inst/doc/neotoma2-package.html
+d01d253c2ca00f8c74802e241430a3e9 *inst/doc/neotoma2-package.Rmd
+62af78d52ad1437e6472a69538dca3fb *inst/doc/neotoma2-package.html
 0a51a44ab075ec1491e461911707b23f *man/add_chronology.Rd
 12a4f98d44fd22e8e0d8b558fb584ab1 *man/as.data.frame.Rd
 72a8f9495a14f0a553e2f05eeef60c17 *man/author_classes.Rd
@@ -226,4 +226,4 @@ ddc35d28a3ae8f1b2ff58e715f64ed7c *vignettes/images/understanding_S4_structure.pn
 6196c04b2cf9dea27fcc942b7d4cafb2 *vignettes/images/understanding_S4_structure_get_datasets.png
 2a90e106af113daac0077cc7dbeed64c *vignettes/images/understanding_S4_structure_get_datasets.svg
 ad4649e3a2ada25dc12ca35e70dfda57 *vignettes/images/understanding_S4_structure_get_sites.svg
-e921a5f29e891ff8b5c4e73f4d360455 *vignettes/neotoma2-package.Rmd
+d01d253c2ca00f8c74802e241430a3e9 *vignettes/neotoma2-package.Rmd
