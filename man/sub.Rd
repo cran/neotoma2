@@ -4,16 +4,23 @@
 \name{[,collunits,numeric-method}
 \alias{[,collunits,numeric-method}
 \alias{sub,collunits-method}
+\alias{[,collunits,numeric,ANY-method}
 \alias{[,datasets,numeric-method}
 \alias{sub,datasets-method}
+\alias{[,datasets,numeric,ANY-method}
 \alias{[}
 \alias{[,sites,numeric-method}
+\alias{[,sites,numeric,ANY-method}
 \alias{[,site,numeric-method}
+\alias{[,site,numeric,ANY-method}
 \alias{[,site,character-method}
+\alias{[,site,character,ANY-method}
 \alias{[,speleothems,numeric-method}
 \alias{sub,speleothems-method}
+\alias{[,speleothems,numeric,ANY-method}
 \alias{[,taxa,numeric-method}
 \alias{sub,taxa-method}
+\alias{[,taxa,numeric,ANY-method}
 \title{sub}
 \usage{
 \S4method{[}{collunits,numeric}(x, i)

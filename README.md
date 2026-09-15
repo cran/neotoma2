@@ -2,7 +2,7 @@
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![NSF-1948926](https://img.shields.io/badge/NSF-1948926-blue.svg)](https://www.nsf.gov/awardsearch/show-award/?AWD_ID=1948926)
 [![Codecov test coverage](https://codecov.io/gh/NeotomaDB/neotoma2/branch/production/graph/badge.svg)](https://app.codecov.io/gh/NeotomaDB/neotoma2?branch=production)
-[![DOI](https://zenodo.org/badge/265675258.svg)](https://zenodo.org/badge/latestdoi/265675258) 
+[![Zenodo doi badge](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21683439-blue.svg)](https://zenodo.org/doi/10.5281/zenodo.21683439)
 [![status](https://joss.theoj.org/papers/80636d1e6d32175f13edb7e7ed14089a/status.svg)](https://joss.theoj.org/papers/10.21105/joss.05561)
 <!-- badges: end -->
 
@@ -72,13 +72,18 @@ The `neotoma2` R package pulls data from the [Neotoma Paleoecology Database](htt
 
 This project is to be evaluated using the following metrics:
 
+* CRAN release 1.1.0 **Pending** August 2026.
+* CRAN release 1.0.12 April 2026
+* CRAN release 1.0.11 Bug fix: Set examples to \dontrun{} to avoid conflicts with CRAN's policy. **DONE** December 14, 2025
+* CRAN release 1.0.10 . **DONE** December 06, 2025
+* CRAN release 1.0.9 [Documentation](https://open.neotomadb.org/neotoma2/) with pkgdown. Bug fixes **DONE** November 26, 2025
 * CRAN release 1.0.8 with speleothem data support and improved documentation.**DONE** November 18, 2025
-* Maintenance Github 1.0.7 release **DONE** June 15, 2025
-* Maintenance Github 1.0.6 release **DONE** June 23, 2025
-* Maintenance Github 1.0.5 release, **DONE** December 27, 2024
-* Maintenance Github 1.0.4 release, **DONE** July 23, 2024
+* CRAN 1.0.7 release **DONE** June 15, 2025
+* CRAN 1.0.6 release **DONE** June 23, 2025
+* CRAN 1.0.5 release, **DONE** December 27, 2024
+* CRAN 1.0.4 release, **DONE** July 23, 2024
 * Updated production Branch with CRAN changes, May 24, 2024.
-* Maintenance Github 1.0.3 release, **DONE** February 28, 2024
+* CRAN 1.0.3 release, **DONE** February 28, 2024
 * Published JOSS paper, **DONE** 28 November, 2023
 * Submitted paper to JOSS **DONE** 03 May, 2023
 * Completion CRAN 1.0.0 release **DONE** April 23, 2023

@@ -3,7 +3,9 @@
 \name{plot}
 \alias{plot}
 \alias{plot,sites-method}
+\alias{plot,sites,ANY-method}
 \alias{plot,site-method}
+\alias{plot,site,ANY-method}
 \title{Plot site coordinates using a basic plot.}
 \usage{
 \S4method{plot}{sites}(x, y, ...)

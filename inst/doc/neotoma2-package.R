@@ -173,7 +173,7 @@ knitr::opts_chunk$set(eval = FALSE,
 # subPub
 
 ## ----setNewPub----------------------------------------------------------------
-# new_pub <- set_publications(
+# new_pub <- set_publication(
 # articletitle = "Myrtle Lake: a late- and post-glacial pollen diagram from northern Minnesota",
 # journal = "Canadian Journal of Botany",
 # volume = 46)

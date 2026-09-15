@@ -5,18 +5,25 @@
 \name{[[<-,collunits-method}
 \alias{[[<-,collunits-method}
 \alias{sub-subset,collunits-method}
+\alias{[[<-,collunits,ANY,ANY-method}
 \alias{[[<-,datasets-method}
 \alias{sub-subset,datasets-method}
+\alias{[[<-,datasets,ANY,ANY-method}
 \alias{[[<-,publications-method}
 \alias{sub-subset,publications-method}
+\alias{[[<-,publications,ANY,ANY-method}
 \alias{[[<-,samples-method}
 \alias{sub-subset,samples-method}
+\alias{[[<-,samples,ANY,ANY-method}
 \alias{sub-subset}
 \alias{[[<-,sites-method}
+\alias{[[<-,sites,ANY,ANY-method}
 \alias{[[<-,speleothems-method}
 \alias{sub-subset,speleothems-method}
+\alias{[[<-,speleothems,ANY,ANY-method}
 \alias{[[<-,taxa-method}
 \alias{sub-subset,taxa-method}
+\alias{[[<-,taxa,ANY,ANY-method}
 \title{sub-subset}
 \usage{
 \S4method{[[}{collunits}(x, i) <- value

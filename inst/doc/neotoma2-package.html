@@ -903,11 +903,11 @@ numeric vector (<code>c(1, 2, 3)</code>)):</p>
 <h4>Create (or Import) New Publications</h4>
 <p>Just as we can use the <code>set_sites()</code> function to set new
 site information, we can also create new publication information using
-<code>set_publications()</code>. With <code>set_publications()</code>
-you can enter as much or as little of the article metadata as you’d
-like, but it’s designed (in part) to use the CrossRef API to return
+<code>set_publication()</code>. With <code>set_publication()</code> you
+can enter as much or as little of the article metadata as you’d like,
+but it’s designed (in part) to use the CrossRef API to return
 information from a DOI.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>new_pub <span class="ot">&lt;-</span> <span class="fu">set_publications</span>(</span>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>new_pub <span class="ot">&lt;-</span> <span class="fu">set_publication</span>(</span>
 <span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="at">articletitle =</span> <span class="st">&quot;Myrtle Lake: a late- and post-glacial pollen diagram from northern Minnesota&quot;</span>,</span>
 <span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="at">journal =</span> <span class="st">&quot;Canadian Journal of Botany&quot;</span>,</span>
 <span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a><span class="at">volume =</span> <span class="dv">46</span>)</span></code></pre></div>
