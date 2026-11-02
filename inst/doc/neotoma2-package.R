@@ -5,8 +5,10 @@ library(dplyr)
 library(neotoma2)
 
 ## ----setOpts, include = FALSE-------------------------------------------------
-knitr::opts_chunk$set(eval = FALSE,
-                      error = TRUE)
+knitr::opts_chunk$set(
+  eval = FALSE,
+  error = TRUE
+)
 
 ## ----setup_md, include=FALSE--------------------------------------------------
 # safe_eval <- function(expr, fallback = "N/A") {
@@ -27,12 +29,14 @@ knitr::opts_chunk$set(eval = FALSE,
 # alex
 
 ## ----sitewithwildcardname-----------------------------------------------------
-# alex <- get_sites(sitename = 'Alex%')
+# alex <- get_sites(sitename = "Alex%")
 # alex
 
 ## ----agebounds----------------------------------------------------------------
-# # Note, we are using the `all_data = TRUE` flag here to avoid the default limit of 25 records, discussed below.
-# # Because these queries are searching through every record they are slow and and are not
+# # Note, we are using the `all_data = TRUE` flag here to avoid the default limit
+# # of 25 records, discussed below.
+# # Because these queries are searching through every record they are slow and and
+# # are not
 # # run in knitting this vignette.
 # get_sites(ageof = 8200, all_data = TRUE) %>% length()
 # get_sites(ageyounger = 5000, ageolder = 8000, all_data = TRUE) %>% length()
@@ -53,13 +57,16 @@ knitr::opts_chunk$set(eval = FALSE,
 # # Modify a value using [<- assignment:
 # alex[[1]]["area"] <- 30
 # alex[[1]]$area
-# # alex[[1]][7] <- 30  This fails because the `Notes` field expects a character string.
+# # alex[[1]][7] <- 30  This fails because the `Notes` field expects a character
+# # string.
 
 ## ----setsitefunction----------------------------------------------------------
-# my_site <- set_site(sitename = "My Lake",
-#                     geography = st_sf(a = 3, st_sfc(st_point(1:2))),
-#                     description = "my lake",
-#                     altitude = 30)
+# my_site <- set_site(
+#   sitename = "My Lake",
+#   geography = st_sf(a = 3, st_sfc(st_point(1:2))),
+#   description = "my lake",
+#   altitude = 30
+# )
 # my_site
 
 ## ----addtosites---------------------------------------------------------------
@@ -83,12 +90,13 @@ knitr::opts_chunk$set(eval = FALSE,
 # my_pollen_datasets
 
 ## ----all_data-----------------------------------------------------------------
-# allSites_dt <- get_sites(datasettype = "diatom")
-# allSites_dt_all <- get_sites(datasettype = "diatom", all_data = TRUE)
+# all_sites_dt <- get_sites(datasettype = "diatom")
+# all_sites_dt_all <- get_sites(datasettype = "diatom", all_data = TRUE)
 # 
 # # Because we used the `all_data = TRUE` flag, there will be more sites
-# # in allSites_dt_all, because it represents all sites containing diatom datasets.
-# length(allSites_dt_all) > length(allSites_dt)
+# # in all_sites_dt_all, because it represents all sites containing diatom
+# # datasets.
+# length(all_sites_dt_all) > length(all_sites_dt)
 
 ## ----boundingBox--------------------------------------------------------------
 # brazil <- '{"type": "Polygon",
@@ -111,12 +119,13 @@ knitr::opts_chunk$set(eval = FALSE,
 # plotLeaflet(brazil_datasets)
 
 ## ----filterBrazil-------------------------------------------------------------
-# 
-# brazil_dates <- neotoma2::filter(brazil_datasets,
-#                                    datasettype == "geochronologic")
+# brazil_dates <- neotoma2::filter(
+#   brazil_datasets,
+#   datasettype == "geochronologic"
+# )
 # # or:
 # brazil_dates <- brazil_datasets %>%
-#     neotoma2::filter(datasettype == "geochronologic")
+#   neotoma2::filter(datasettype == "geochronologic")
 # 
 # # With boolean operators:
 # brazil_space <- brazil_datasets %>% neotoma2::filter(lat > -18 & lat < -16)
@@ -135,9 +144,11 @@ knitr::opts_chunk$set(eval = FALSE,
 # # functionality of the `sf` package.
 # brazil_sf <- geojsonsf::geojson_sf(brazil)
 # 
-# brazil_records <- get_datasets(loc = brazil_sf, all_data=TRUE) %>%
-#     neotoma2::filter(datasettype == "pollen" & age_range_young <= 1000 & age_range_old >= 10000) %>%
-#     get_downloads()
+# brazil_records <- get_datasets(loc = brazil_sf, all_data = TRUE) %>%
+#   neotoma2::filter(
+#     datasettype == "pollen" & age_range_young <= 1000 & age_range_old >= 10000
+#   ) %>%
+#   get_downloads()
 # 
 # 
 # count_by_site <- samples(brazil_records) %>%
@@ -147,7 +158,6 @@ knitr::opts_chunk$set(eval = FALSE,
 #   group_by(variablename) %>%
 #   summarise(n = n()) %>%
 #   arrange(desc(n))
-# 
 
 ## ----pubsbyid-----------------------------------------------------------------
 # one <- get_publications(12)
@@ -157,7 +167,7 @@ knitr::opts_chunk$set(eval = FALSE,
 # two[[2]]
 
 ## ----fulltestPubSearch--------------------------------------------------------
-# michPubs <- get_publications(search = "Michigan", limit = 2)
+# mich_pubs <- get_publications(search = "Michigan", limit = 2)
 
 ## ----nonsenseSearch-----------------------------------------------------------
 # noise <- get_publications(search = "Canada Banada Nanada", limit = 5)
@@ -167,16 +177,18 @@ knitr::opts_chunk$set(eval = FALSE,
 
 ## ----subsetPubs---------------------------------------------------------------
 # # Select publications with Neotoma Publication IDs 1 - 10.
-# pubArray <- get_publications(1:10)
+# pub_array <- get_publications(1:10)
 # # Select the first five publications:
-# subPub <- pubArray[[1:5]]
-# subPub
+# sub_pub <- pub_array[[1:5]]
+# sub_pub
 
 ## ----setNewPub----------------------------------------------------------------
 # new_pub <- set_publication(
-# articletitle = "Myrtle Lake: a late- and post-glacial pollen diagram from northern Minnesota",
-# journal = "Canadian Journal of Botany",
-# volume = 46)
+#   articletitle = paste("Myrtle Lake: a late- and post-glacial pollen diagram",
+#                        "from northern Minnesota"),
+#   journal = "Canadian Journal of Botany",
+#   volume = 46
+# )
 
 ## ----setPubValue--------------------------------------------------------------
 # new_pub@pages <- "1397-1410"

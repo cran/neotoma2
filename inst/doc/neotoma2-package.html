@@ -535,7 +535,7 @@ use <code>c()</code>).</p>
 find sites when we’re not sure the exact match. Note that the search is
 case <strong>insensitive</strong> so a search for <code>alex%</code> or
 <code>Alex%</code> will return the same results.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>alex <span class="ot">&lt;-</span> <span class="fu">get_sites</span>(<span class="at">sitename =</span> <span class="st">&#39;Alex%&#39;</span>)</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>alex <span class="ot">&lt;-</span> <span class="fu">get_sites</span>(<span class="at">sitename =</span> <span class="st">&quot;Alex%&quot;</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>alex</span></code></pre></div>
 <p>Since this new <code>sites</code> object has N/A. elements that
 belong to <code>site</code>, we may want to access only one of the
@@ -564,12 +564,14 @@ may also be interested in any record within a time bin, regardless of
 whether the site spans that time zone or not. They would query
 <code>get_sites(minage = 5000, maxage = 8000)</code>.</p>
 <p>We can see how these age bounds differ:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Note, we are using the `all_data = TRUE` flag here to avoid the default limit of 25 records, discussed below.</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co"># Because these queries are searching through every record they are slow and and are not</span></span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co"># run in knitting this vignette.</span></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="fu">get_sites</span>(<span class="at">ageof =</span> <span class="dv">8200</span>, <span class="at">all_data =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">length</span>()</span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="fu">get_sites</span>(<span class="at">ageyounger =</span> <span class="dv">5000</span>, <span class="at">ageolder =</span> <span class="dv">8000</span>, <span class="at">all_data =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">length</span>()</span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="fu">get_sites</span>(<span class="at">minage =</span> <span class="dv">5000</span>, <span class="at">maxage =</span> <span class="dv">8000</span>, <span class="at">all_data =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">length</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Note, we are using the `all_data = TRUE` flag here to avoid the default limit</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co"># of 25 records, discussed below.</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co"># Because these queries are searching through every record they are slow and and</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co"># are not</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co"># run in knitting this vignette.</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="fu">get_sites</span>(<span class="at">ageof =</span> <span class="dv">8200</span>, <span class="at">all_data =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">length</span>()</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="fu">get_sites</span>(<span class="at">ageyounger =</span> <span class="dv">5000</span>, <span class="at">ageolder =</span> <span class="dv">8000</span>, <span class="at">all_data =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">length</span>()</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="fu">get_sites</span>(<span class="at">minage =</span> <span class="dv">5000</span>, <span class="at">maxage =</span> <span class="dv">8000</span>, <span class="at">all_data =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">length</span>()</span></code></pre></div>
 <p>It is possible to pass all parameters (<code>ageof</code>,
 <code>minage</code>, <code>maxage</code>, <code>ageyounger</code>, . . .
 ), but it is likely that these will conflict and result in an empty set
@@ -607,7 +609,8 @@ within a site. You can see all the <code>site</code> slots using the
 <span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="co"># Modify a value using [&lt;- assignment:</span></span>
 <span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>alex[[<span class="dv">1</span>]][<span class="st">&quot;area&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">30</span></span>
 <span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>alex[[<span class="dv">1</span>]]<span class="sc">$</span>area</span>
-<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="co"># alex[[1]][7] &lt;- 30  This fails because the `Notes` field expects a character string.</span></span></code></pre></div>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="co"># alex[[1]][7] &lt;- 30  This fails because the `Notes` field expects a character</span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="co"># string.</span></span></code></pre></div>
 <p>Using assignment, we can add information programmatically, for
 example, by working interactively with a digital elevation model or
 hydrographic data to obtain lake area measurements. Although not
@@ -623,11 +626,13 @@ other data within Neotoma. You can create a site with the
 <code>set_site()</code> function. It will ask you to provide important
 information such as <code>sitename</code>, <code>lat</code>, and
 <code>long</code> attributes.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="fu">set_site</span>(<span class="at">sitename =</span> <span class="st">&quot;My Lake&quot;</span>, </span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>                    <span class="at">geography =</span> <span class="fu">st_sf</span>(<span class="at">a =</span> <span class="dv">3</span>, <span class="fu">st_sfc</span>(<span class="fu">st_point</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>))), </span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>                    <span class="at">description =</span> <span class="st">&quot;my lake&quot;</span>, </span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>                    <span class="at">altitude =</span> <span class="dv">30</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>my_site</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="fu">set_site</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  <span class="at">sitename =</span> <span class="st">&quot;My Lake&quot;</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="at">geography =</span> <span class="fu">st_sf</span>(<span class="at">a =</span> <span class="dv">3</span>, <span class="fu">st_sfc</span>(<span class="fu">st_point</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>))),</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>  <span class="at">description =</span> <span class="st">&quot;my lake&quot;</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>  <span class="at">altitude =</span> <span class="dv">30</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>)</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>my_site</span></code></pre></div>
 <p>If we have a set of sites that we are analyzing, we can add the new
 site to the set of sites, either by appending it to the end, using
 <code>c()</code>, or by replacing a particular element using
@@ -692,19 +697,20 @@ to prefer that users use <code>all_data = TRUE</code> once their
 analytic workflow is mostly complete.</p>
 <p>We can use that <code>all_data = TRUE</code> in R in the following
 way:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>allSites_dt <span class="ot">&lt;-</span> <span class="fu">get_sites</span>(<span class="at">datasettype =</span> <span class="st">&quot;diatom&quot;</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>allSites_dt_all <span class="ot">&lt;-</span> <span class="fu">get_sites</span>(<span class="at">datasettype =</span> <span class="st">&quot;diatom&quot;</span>, <span class="at">all_data =</span> <span class="cn">TRUE</span>)</span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>all_sites_dt <span class="ot">&lt;-</span> <span class="fu">get_sites</span>(<span class="at">datasettype =</span> <span class="st">&quot;diatom&quot;</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>all_sites_dt_all <span class="ot">&lt;-</span> <span class="fu">get_sites</span>(<span class="at">datasettype =</span> <span class="st">&quot;diatom&quot;</span>, <span class="at">all_data =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="co"># Because we used the `all_data = TRUE` flag, there will be more sites</span></span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co"># in allSites_dt_all, because it represents all sites containing diatom datasets.</span></span>
-<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="fu">length</span>(allSites_dt_all) <span class="sc">&gt;</span> <span class="fu">length</span>(allSites_dt)</span></code></pre></div>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co"># in all_sites_dt_all, because it represents all sites containing diatom</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="co"># datasets.</span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="fu">length</span>(all_sites_dt_all) <span class="sc">&gt;</span> <span class="fu">length</span>(all_sites_dt)</span></code></pre></div>
 <div id="spatial-searches" class="section level3">
 <h3>Spatial Searches</h3>
 <p>You can get the coordinates to create a GeoJson bounding box from <a href="https://geojson.io/#map=2/20.0/0.0">here</a>, or you can use
 pre-existing objects within R, for example, country-level data within
 the <code>spData</code> package:</p>
 <p>Accessing datasets by bounding box:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>brazil <span class="ot">&lt;-</span> <span class="st">&#39;{&quot;type&quot;: &quot;Polygon&quot;, </span></span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>brazil <span class="ot">&lt;-</span> <span class="st">&#39;{&quot;type&quot;: &quot;Polygon&quot;,</span></span>
 <span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="st">            &quot;coordinates&quot;: [[</span></span>
 <span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="st">                [-73.125, -9.102],</span></span>
 <span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="st">                [-56.953, -33.138],</span></span>
@@ -735,14 +741,16 @@ with the set of records returned from our <code>get_datasets()</code>
 query, and then use the <code>filter</code> function in
 <code>neotoma2</code> to select only those datasets that are
 geochronologic:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>brazil_dates <span class="ot">&lt;-</span> neotoma2<span class="sc">::</span><span class="fu">filter</span>(brazil_datasets,</span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>                                   datasettype <span class="sc">==</span> <span class="st">&quot;geochronologic&quot;</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co"># or:</span></span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>brazil_dates <span class="ot">&lt;-</span> brazil_datasets <span class="sc">%&gt;%</span></span>
-<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>    neotoma2<span class="sc">::</span><span class="fu">filter</span>(datasettype <span class="sc">==</span> <span class="st">&quot;geochronologic&quot;</span>)</span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="co"># With boolean operators:</span></span>
-<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a>brazil_space <span class="ot">&lt;-</span> brazil_datasets <span class="sc">%&gt;%</span> neotoma2<span class="sc">::</span><span class="fu">filter</span>(lat <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">18</span> <span class="sc">&amp;</span> lat <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">16</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>brazil_dates <span class="ot">&lt;-</span> neotoma2<span class="sc">::</span><span class="fu">filter</span>(</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>  brazil_datasets,</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  datasettype <span class="sc">==</span> <span class="st">&quot;geochronologic&quot;</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>)</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co"># or:</span></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>brazil_dates <span class="ot">&lt;-</span> brazil_datasets <span class="sc">%&gt;%</span></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>  neotoma2<span class="sc">::</span><span class="fu">filter</span>(datasettype <span class="sc">==</span> <span class="st">&quot;geochronologic&quot;</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co"># With boolean operators:</span></span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a>brazil_space <span class="ot">&lt;-</span> brazil_datasets <span class="sc">%&gt;%</span> neotoma2<span class="sc">::</span><span class="fu">filter</span>(lat <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">18</span> <span class="sc">&amp;</span> lat <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">16</span>)</span></code></pre></div>
 <p>The <code>filter()</code> function takes as the first argument, a
 datasets object, followed by the criteria we want to use to filter.
 Current supported criteria includes:</p>
@@ -784,7 +792,7 @@ has been called.</div>
 records from the country, filter to only pollen records with samples
 covering the last 10,000 years, and then look at the relative frequency
 of taxa across sites. We might do something like this:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>brazil <span class="ot">&lt;-</span> <span class="st">&#39;{&quot;type&quot;: &quot;Polygon&quot;, </span></span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>brazil <span class="ot">&lt;-</span> <span class="st">&#39;{&quot;type&quot;: &quot;Polygon&quot;,</span></span>
 <span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="st">            &quot;coordinates&quot;: [[</span></span>
 <span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="st">                [-73.125, -9.102],</span></span>
 <span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="st">                [-56.953, -33.138],</span></span>
@@ -797,18 +805,20 @@ of taxa across sites. We might do something like this:</p>
 <span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a><span class="co"># functionality of the `sf` package.</span></span>
 <span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a>brazil_sf <span class="ot">&lt;-</span> geojsonsf<span class="sc">::</span><span class="fu">geojson_sf</span>(brazil)</span>
 <span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a></span>
-<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a>brazil_records <span class="ot">&lt;-</span> <span class="fu">get_datasets</span>(<span class="at">loc =</span> brazil_sf, <span class="at">all_data=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-15"><a href="#cb16-15" tabindex="-1"></a>    neotoma2<span class="sc">::</span><span class="fu">filter</span>(datasettype <span class="sc">==</span> <span class="st">&quot;pollen&quot;</span> <span class="sc">&amp;</span> age_range_young <span class="sc">&lt;=</span> <span class="dv">1000</span> <span class="sc">&amp;</span> age_range_old <span class="sc">&gt;=</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-16"><a href="#cb16-16" tabindex="-1"></a>    <span class="fu">get_downloads</span>()</span>
-<span id="cb16-17"><a href="#cb16-17" tabindex="-1"></a></span>
-<span id="cb16-18"><a href="#cb16-18" tabindex="-1"></a></span>
-<span id="cb16-19"><a href="#cb16-19" tabindex="-1"></a>count_by_site <span class="ot">&lt;-</span> <span class="fu">samples</span>(brazil_records) <span class="sc">%&gt;%</span></span>
-<span id="cb16-20"><a href="#cb16-20" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(elementtype <span class="sc">==</span> <span class="st">&quot;pollen&quot;</span> <span class="sc">&amp;</span> units <span class="sc">==</span> <span class="st">&quot;NISP&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-21"><a href="#cb16-21" tabindex="-1"></a>  <span class="fu">group_by</span>(siteid, variablename) <span class="sc">%&gt;%</span></span>
-<span id="cb16-22"><a href="#cb16-22" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb16-23"><a href="#cb16-23" tabindex="-1"></a>  <span class="fu">group_by</span>(variablename) <span class="sc">%&gt;%</span></span>
+<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a>brazil_records <span class="ot">&lt;-</span> <span class="fu">get_datasets</span>(<span class="at">loc =</span> brazil_sf, <span class="at">all_data =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-15"><a href="#cb16-15" tabindex="-1"></a>  neotoma2<span class="sc">::</span><span class="fu">filter</span>(</span>
+<span id="cb16-16"><a href="#cb16-16" tabindex="-1"></a>    datasettype <span class="sc">==</span> <span class="st">&quot;pollen&quot;</span> <span class="sc">&amp;</span> age_range_young <span class="sc">&lt;=</span> <span class="dv">1000</span> <span class="sc">&amp;</span> age_range_old <span class="sc">&gt;=</span> <span class="dv">10000</span></span>
+<span id="cb16-17"><a href="#cb16-17" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-18"><a href="#cb16-18" tabindex="-1"></a>  <span class="fu">get_downloads</span>()</span>
+<span id="cb16-19"><a href="#cb16-19" tabindex="-1"></a></span>
+<span id="cb16-20"><a href="#cb16-20" tabindex="-1"></a></span>
+<span id="cb16-21"><a href="#cb16-21" tabindex="-1"></a>count_by_site <span class="ot">&lt;-</span> <span class="fu">samples</span>(brazil_records) <span class="sc">%&gt;%</span></span>
+<span id="cb16-22"><a href="#cb16-22" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(elementtype <span class="sc">==</span> <span class="st">&quot;pollen&quot;</span> <span class="sc">&amp;</span> units <span class="sc">==</span> <span class="st">&quot;NISP&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-23"><a href="#cb16-23" tabindex="-1"></a>  <span class="fu">group_by</span>(siteid, variablename) <span class="sc">%&gt;%</span></span>
 <span id="cb16-24"><a href="#cb16-24" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb16-25"><a href="#cb16-25" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code></pre></div>
+<span id="cb16-25"><a href="#cb16-25" tabindex="-1"></a>  <span class="fu">group_by</span>(variablename) <span class="sc">%&gt;%</span></span>
+<span id="cb16-26"><a href="#cb16-26" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb16-27"><a href="#cb16-27" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code></pre></div>
 <p>In this code chunk we define the bounding polygon for our sites,
 filter by time and dataset type, and then return the full records for
 those sites. We get a <code>sites</code> object with dataset and sample
@@ -872,7 +882,7 @@ publications. We can search using the following properties:</p>
 <li><code>limit</code></li>
 <li><code>offset</code></li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>michPubs <span class="ot">&lt;-</span> <span class="fu">get_publications</span>(<span class="at">search =</span> <span class="st">&quot;Michigan&quot;</span>, <span class="at">limit =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>mich_pubs <span class="ot">&lt;-</span> <span class="fu">get_publications</span>(<span class="at">search =</span> <span class="st">&quot;Michigan&quot;</span>, <span class="at">limit =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p>This results in a set of N/A publications from Neotoma, equal to the
 <code>limit</code>. If the number of matching publications is less than
 the limit then the <code>length()</code> will be smaller.</p>
@@ -894,10 +904,10 @@ and the class (for a single publication) will be of type
 <code>[[</code> method, either as a sequence (<code>1:10</code>, or as a
 numeric vector (<code>c(1, 2, 3)</code>)):</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="co"># Select publications with Neotoma Publication IDs 1 - 10.</span></span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>pubArray <span class="ot">&lt;-</span> <span class="fu">get_publications</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>pub_array <span class="ot">&lt;-</span> <span class="fu">get_publications</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="co"># Select the first five publications:</span></span>
-<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>subPub <span class="ot">&lt;-</span> pubArray[[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]]</span>
-<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a>subPub</span></code></pre></div>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>sub_pub <span class="ot">&lt;-</span> pub_array[[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]]</span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a>sub_pub</span></code></pre></div>
 </div>
 <div id="create-or-import-new-publications" class="section level4">
 <h4>Create (or Import) New Publications</h4>
@@ -908,9 +918,11 @@ can enter as much or as little of the article metadata as you’d like,
 but it’s designed (in part) to use the CrossRef API to return
 information from a DOI.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>new_pub <span class="ot">&lt;-</span> <span class="fu">set_publication</span>(</span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="at">articletitle =</span> <span class="st">&quot;Myrtle Lake: a late- and post-glacial pollen diagram from northern Minnesota&quot;</span>,</span>
-<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="at">journal =</span> <span class="st">&quot;Canadian Journal of Botany&quot;</span>,</span>
-<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a><span class="at">volume =</span> <span class="dv">46</span>)</span></code></pre></div>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>  <span class="at">articletitle =</span> <span class="fu">paste</span>(<span class="st">&quot;Myrtle Lake: a late- and post-glacial pollen diagram&quot;</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>                       <span class="st">&quot;from northern Minnesota&quot;</span>),</span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a>  <span class="at">journal =</span> <span class="st">&quot;Canadian Journal of Botany&quot;</span>,</span>
+<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a>  <span class="at">volume =</span> <span class="dv">46</span></span>
+<span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a>)</span></code></pre></div>
 <p>A <code>publication</code> has a large number of slots that can be
 defined. These may be left blank, they may be set directly after the
 publication is defined:</p>
